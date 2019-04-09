@@ -1,0 +1,95 @@
+.card-text{
+	margin-left: 10px;
+	margin-right: 10px;
+	text-align: justify;
+}
+
+section{
+	background: white !important;
+}
+.item:hover{
+	background: gray; 
+  }
+
+ a{
+ 	cursor: pointer;
+}
+.parrafo{
+	padding-left: 6px !important;
+}
+
+.img-prop{
+ 	cursor: pointer;
+	width: 100%;
+	height: 300px;
+	/* max-height: 240px;  */
+	margin: auto;
+}
+
+i{
+	cursor: pointer;
+}
+
+.portfolio-caption{
+	width: 100%;
+}
+
+	
+.todo{
+	box-shadow: 1px 1px 1px 1px silver; 
+}
+
+@media (min-width: 544px)  and (max-width: 767px) {
+	.parrafo{
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	  }
+	 }
+ 
+
+  .icon{
+	  float: right;
+	  margin-top: 5px;
+  }
+ 
+  .corazon{
+	  margin-right: 4px;
+  }
+
+  .img-user-prop{
+	  float: left;
+	  height: 40px;
+	  width: 40px;
+	  border-radius: 50%;
+  }
+
+  .name-user-prop{
+	  float: left;
+	  margin-left: 7px;
+	  margin-top: 5px;
+	  color: gray;
+	  font-weight: bold;
+  }
+
+  .usuario{
+	  position: absolute;
+	  width: 97.5%;
+	  padding: 0 5px;
+	  right: 5px;
+	  bottom: 5px;
+  }
+
+  .prop-title{
+	  margin-top: -20px;
+	  font-weight: bold;
+	  color: #20B2AA;
+  }
+ 
+  .prop-title:hover{
+	text-decoration: underline;
+}
+
+  .posicion{
+	  position: relative;
+  }
