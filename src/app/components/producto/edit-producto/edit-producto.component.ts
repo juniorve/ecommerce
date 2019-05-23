@@ -17,13 +17,13 @@ declare var $: any;
 
 
 @Component({
-  selector: 'new-producto',
-  templateUrl: './new-producto.component.html',
-  styleUrls: ['./new-producto.component.css'],
+  selector: 'edit-producto',
+  templateUrl: './edit-producto.component.html',
+  styleUrls: ['./edit-producto.component.css'],
   providers: [ProductoService, UserService,ProveedorService]
 
 })
-export class NewProductoComponent implements OnInit {
+export class EditProductoComponent implements OnInit {
   tallaControl = new FormControl([Validators.required]);
   envioControl = new FormControl([Validators.required]);
 
@@ -41,6 +41,9 @@ export class NewProductoComponent implements OnInit {
   public producto: Producto;
   public mensajeError: String;
   public imagenTemp: any;
+  public productoId:String='';
+  
+public proveedores:Proveedor[]=[];
 
   constructor(private _productoService: ProductoService,
     private _proveedorService:ProveedorService,
@@ -54,11 +57,42 @@ export class NewProductoComponent implements OnInit {
   }
 
   ngOnInit() { 
+    this.gerProductoUrl();
     this.getProveedores();
+  }
+ 
+  gerProductoUrl() {
+    this._route.params.forEach((params: Params) => {
+      if (params['id']) {
+        this.productoId = params['id'];
+        this.getProducto();
+      }
+    });
   }
 
 
-public proveedores:Proveedor[]=[];
+  getProducto() {
+    this._productoService.getProducto(this.token, this.productoId).subscribe(
+      response => {
+        console.log(response);
+        if (!response.producto) {
+        } else {
+          this.producto = response.producto;
+          console.log(this.producto);
+           this.getProveedores();
+          //    this.imagenTemp=this.restaurant.imagen;
+        }
+      },
+      error => {
+        var errorMessage = <any>error;
+        if (errorMessage != null) {
+          console.log(error);
+        }
+      }
+    );
+  }
+
+
   getProveedores() {
     this._proveedorService.getProveedores(this.token,this.identity._id).subscribe(
       response => {
@@ -76,19 +110,19 @@ public proveedores:Proveedor[]=[];
     );
   }
 
-  saveProducto() {
+  editProducto() {
     console.log(this.producto);
-    this._productoService.saveProducto(this.token, this.producto).subscribe(
+    this._productoService.updateProducto(this.token,this.productoId, this.producto).subscribe(
       response => {
         if (!response.producto) {
-          swal('Error', 'el producto no se guardo correctamente', 'warning');
+          swal('Error', 'el producto no se modifico correctamente', 'warning');
         }
         else {
           let id_producto = response.producto._id;
           this.makeFileRequest(this.url + 'upload-img-producto/' + id_producto, [],
             this.filesToUpload).then(
               (result) => {
-                swal('Producto registrado', 'Datos guardados correctamente', 'success')
+                swal('Producto modificado', 'Datos modificados correctamente', 'success')
                 .then((prodCreate)=>{
                   if(prodCreate){
                     this._router.navigate(['/adm-producto']);

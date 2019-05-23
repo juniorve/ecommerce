@@ -1,3 +1,4 @@
+import { EditProductoComponent } from './components/producto/edit-producto/edit-producto.component';
 import { ListProductoComponent } from './components/producto/list-producto/list-producto.component';
 import { CategoriasComponent } from './components/categorias/categorias.component';
 import { ModuleWithProviders } from '@angular/core';
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
       {path:'ganancias', component: GanananciasComponent},
       //productos
       {path:'adm-producto', component: AdmProductoComponent},
+      {path:'edit-producto/:id', component: EditProductoComponent},
       {path:'new-producto', component: NewProductoComponent},
       {path:'list-producto', component: ListProductoComponent}
      ]

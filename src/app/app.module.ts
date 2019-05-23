@@ -1,3 +1,4 @@
+import { EditProductoComponent } from './components/producto/edit-producto/edit-producto.component';
 import { AdmProductoComponent } from './components/producto/adm-producto/adm-producto.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { CategoriasComponent } from './components/categorias/categorias.component';
@@ -45,7 +46,8 @@ import { GanananciasComponent } from './components/ingresos/ganancias/ganancias.
     AdmProductoComponent,
     NewProductoComponent,
     ListProductoComponent,
-    GanananciasComponent
+    GanananciasComponent,
+    EditProductoComponent
   ],
   imports: [
      MaterialModule, 

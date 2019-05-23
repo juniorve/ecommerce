@@ -51,6 +51,12 @@ getProductos()
         }
    );
   }
+
+  editProducto(idProducto: String) {
+    console.log("aaa")
+    this._router.navigate(['/edit-producto/' + idProducto]);
+  }
+
   
   deleteProducto(idProducto:any){
 

@@ -140,7 +140,7 @@
           <div class="col-xs-12 col-md-6">
             <mat-form-field class="texto" appearance="outline">
               <mat-label>Seleccione Proveedor</mat-label>
-              <mat-select name="proveedor" [(ngModel)]="producto.proveedor" required>
+              <mat-select name="proveedor" [(ngModel)]="producto.proveedor" [formControl]="envioControl" required>
                 <mat-option *ngFor="let proveedor of proveedores" [value]="proveedor._id">
                   {{proveedor.nombre}}
                 </mat-option>
@@ -186,9 +186,9 @@
         <button class="btn volver btnsave" [routerLink]="['/adm-producto']" type="button">
           <i class="fa fa-arrow-left" aria-hidden="true"></i>
           Regresar</button>
-        <button class="btn guardar  btnsave" (click)="saveProducto()" type="button">
+        <button class="btn guardar  btnsave" (click)="editProducto()" type="button">
           <i class="fa fa-floppy-o" aria-hidden="true"></i>
-          Guardar</button>
+          Guardar cambios</button>
       </div>
     </div>
 

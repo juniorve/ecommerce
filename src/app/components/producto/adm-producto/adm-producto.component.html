@@ -7,7 +7,8 @@
 		</div>
 		<br>
 		<div class="col-xl-10 offset-xl-1">
-			<span class="info">Adelante, configura las productos de tu empresa, puedes crearlos seleccionando el botón Agregar</span>
+			<span class="info">Adelante, configura las productos de tu empresa, puedes crearlos seleccionando el botón
+				Agregar</span>
 
 			<div class="table-responsive lista" *ngIf="this.productos.length>0">
 				<table class="table table-bordered table-hover tabla">
@@ -29,8 +30,7 @@
 					</thead>
 					<tbody>
 						<tr *ngFor="let producto of productos; let i=index" [ngClass]="{'table-active': i==_ind && sombrear==true
-												}"
-						 (click)="recuperar_etapa(etapa)" (click)="sombrear=true">
+												}" (click)="sombrear=true">
 							<td scope="row">{{i+1}}</td>
 							<td>{{producto.nombre}}</td>
 							<td>{{producto.descripcion}}</td>
@@ -44,8 +44,10 @@
 							<td>{{producto.cantidad}}</td>
 							<td>
 								<div class="btn-group">
-									<button class="btn btn-default" (click)="editProducto(producto._id)"><span class="fa fa-pencil"></span></button>
-									<button class="btn btn-danger" (click)="deleteProducto(producto._id)"><span class="fa fa-trash"></span></button>
+									<button class="btn btn-default" (click)="editProducto(producto._id)"><span
+											class="fa fa-pencil"></span></button>
+									<button class="btn btn-danger" (click)="deleteProducto(producto._id)"><span
+											class="fa fa-trash"></span></button>
 								</div>
 
 							</td>
