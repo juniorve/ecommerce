@@ -23,11 +23,7 @@ declare var $: any;
 })
 export class NewProveedorComponent implements OnInit {
   tipoControl = new FormControl([Validators.required]);
-  tipos = [
-    { name: 'ropa hombre' },
-    { name: 'ropa mujer' },
-    { name: 'accesorios' } 
-  ];
+  tipos:any[] = [];
   date = new FormControl(new Date());
   serializedDate = new FormControl((new Date()).toISOString());
   public identity;
@@ -38,7 +34,7 @@ export class NewProveedorComponent implements OnInit {
   public mensajeError: String;
   public imagenTemp: any;
 
-  constructor(private _proveedorServide: ProveedorService,
+  constructor(private _proveedorService: ProveedorService,
     private _userService: UserService,
     private _route: ActivatedRoute,
     private _router: Router) {
@@ -48,25 +44,47 @@ export class NewProveedorComponent implements OnInit {
     this.proveedor = new Proveedor('', '', '', '', '', '', '',this.identity._id);
   }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.getTipos();
+  }
+
+  getTipos(){
+    console.log(this.token);
+    this._proveedorService.getTipos(this.token).subscribe(
+      res=>{
+        console.log(res);
+        this.tipos=res.tipos;
+      },
+      error=>{
+
+      }
+    );
+  }
 
   saveProveedor() {
     console.log(this.proveedor);
-    this._proveedorServide.saveProveedor(this.token, this.proveedor).subscribe(
+    this._proveedorService.saveProveedor(this.token, this.proveedor).subscribe(
       response => {
         if (!response.proveedor) {
-          swal('Error', 'el proveedor no se guardo correctamente', 'warning');
+          swal('Error', 'el proveedor no se guardo correctamente', 'error');
         }
         else {
           let id_proveedor = response.proveedor._id;
           this.makeFileRequest(this.url + 'upload-img-proveedor/' + id_proveedor, [],
             this.filesToUpload).then(
               (result) => {
-                swal('Proveedor registrado', 'Datos guardados correctamente', 'success');
-                this._router.navigate(['/mant-proveedor']);
+                swal('Proveedor registrado', 'Datos guardados correctamente',{icon:"success",
+                closeOnClickOutside: false}).then(
+                  (saveProducto)=>{
+                    if(saveProducto){
+                      this._router.navigate(['/mant-proveedor']);
+                    }
+                  }
+                );
               },
               (error) => {
                 console.log(error);
+          swal('Error', error.message, 'error');
               }
             );
         }
@@ -89,7 +107,7 @@ export class NewProveedorComponent implements OnInit {
     let reader = new FileReader();
     let urlImgTemp = reader.readAsDataURL(archivo);
     reader.onloadend = () => {
-      console.log(reader.result);
+      // console.log(reader.result);
       this.imagenTemp = reader.result;
     };
   }

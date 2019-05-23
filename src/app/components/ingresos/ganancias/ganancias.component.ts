@@ -39,12 +39,11 @@ public cantidad:any=0;
 getProductos()
 {                  
   this.ganancias=[
-    {usuario:'Juan Manuel', fecha:'16/10/2018', hora:'12:35', prenda:'Pantalón Jean', cantidad:2, ganancia:50},
-    {usuario:'María Lopez', fecha:'21/10/2018', hora:'2:40', prenda:'Vestido Floreado', cantidad:4, ganancia:90},
-    {usuario:'Sofia Mendoza', fecha:'24/10/2018', hora:'3:10', prenda:'Chompa de Lana', cantidad:10, ganancia:200},
-    {usuario:'Joaquin Torres', fecha:'2/11/2018', hora:'4:30', prenda:'Camisa invierno', cantidad:5, ganancia:140},
-    {usuario:'Erika Chavez', fecha:'11/11/2018', hora:'11:14', prenda:'Casaca de cuero', cantidad:8, ganancia:100},
-    {usuario:'Carlos Lujan', fecha:'20/11/2018', hora:'9:30', prenda:'Short primavera', cantidad:15, ganancia:320},
+    {usuario:'Juan Manuel', fecha:'16/10/2018', hora:'12:35', prenda:'Olla oster', cantidad:2, ganancia:'S/. 50'},
+    {usuario:'María Lopez', fecha:'21/10/2018', hora:'2:40', prenda:'Cocina a gas', cantidad:4, ganancia:'S/.90'},
+    {usuario:'Sofia Mendoza', fecha:'24/10/2018', hora:'3:10', prenda:'Olla a presión', cantidad:10, ganancia:'S/. 200'},
+    {usuario:'Joaquin Torres', fecha:'2/11/2018', hora:'4:30', prenda:'Set de cubiertos bosh', cantidad:5, ganancia:'S/ .140'},
+    {usuario:'Erika Chavez', fecha:'11/11/2018', hora:'11:14', prenda:'Utencilios de cocina', cantidad:8, ganancia:'S/. 100'},
   ]
 }
 }

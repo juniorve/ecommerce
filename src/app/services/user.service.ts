@@ -18,7 +18,7 @@ export class UserService {
 
   constructor(private _http: Http) {
     this.url = GLOBAL.url;
-    this.usuario = new User('','','','','','','','','','','','');
+    this.usuario = new User(null,'','','','','','','','','');
 
   }
 

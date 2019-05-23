@@ -6,7 +6,6 @@
     <!-- progressbar -->
     <ul id="progressbar">
       <li class="active">Cuenta</li>
-      <li>Redes sociales</li>
       <li>Datos personales</li>
     </ul>
     <!-- fieldsets -->
@@ -35,21 +34,13 @@
       <input type="password" name="cpass" placeholder="Confirme Contraseña" />
       <a [routerLink]="['/principal']">Inicio</a>
       <input type="button" name="next" class="next action-button" value="Siguiente" />
-    </fieldset>
-    <fieldset>
-
-
-      <h2 class="fs-title">Redes sociales</h2>
-      <input #facebook="ngModel" name="facebook" [(ngModel)]="user.facebook" type="text" name="twitter" placeholder="Twitter" />
-      <input #twiter="ngModel" name="twiter" [(ngModel)]="user.twiter" type="text" name="facebook" placeholder="Facebook" />
-      <input type="button" name="previous" class="previous action-button" value="Anterior" />
-      <input type="button" name="next" class="next action-button" value="Siguiente" />
-    </fieldset>
+    </fieldset> 
     <fieldset>
       <h2 class="fs-title">Datos personales</h2>
-      <input #name="ngModel" name="name" [(ngModel)]="user.name" type="text" name="fname" placeholder="Nombre" />
-      <input #surname="ngModel" name="surname" [(ngModel)]="user.surname" type="text" name="lname" placeholder="Apellidos" />
-      <input #celular="ngModel" name="celular" [(ngModel)]="user.celular" type="text"  placeholder="Celular" />
+      <input #dni="ngModel" name="dni" [(ngModel)]="user.dni" type="number"  placeholder="Dni" />
+      <input #name="ngModel" name="name" [(ngModel)]="user.name" type="text"  placeholder="Nombre" />
+      <input #surname="ngModel" name="surname" [(ngModel)]="user.surname" type="text"  placeholder="Apellidos" />
+      <input #telefono="ngModel" name="telefono" [(ngModel)]="user.telefono" type="text"  placeholder="Telefono" />
       <input #ciudad="ngModel" name="ciudad" [(ngModel)]="user.ciudad" type="text"  placeholder="Ciudad" />
       <input #direccion="ngModel" name="direccion" [(ngModel)]="user.direccion" type="text"  placeholder="Dirección" />
 

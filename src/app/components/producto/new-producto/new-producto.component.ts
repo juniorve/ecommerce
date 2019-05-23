@@ -57,7 +57,7 @@ export class NewProductoComponent implements OnInit {
     this.url = GLOBAL.url;
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
-    this.producto = new Producto('', '', '', '', '', 0, 0, 0, '', '', '', '',this.identity._id,'');
+    this.producto = new Producto('',null,null,null,null,null,'','','','','','',this.identity._id,'');
   }
 
   ngOnInit() { 
@@ -95,8 +95,12 @@ public proveedores:Proveedor[]=[];
           this.makeFileRequest(this.url + 'upload-img-producto/' + id_producto, [],
             this.filesToUpload).then(
               (result) => {
-                swal('Producto registrado', 'Datos guardados correctamente', 'success');
-                this._router.navigate(['/adm-producto']);
+                swal('Producto registrado', 'Datos guardados correctamente', 'success')
+                .then((prodCreate)=>{
+                  if(prodCreate){
+                    this._router.navigate(['/adm-producto']);
+                  }
+                });
               },
               (error) => {
                 console.log(error);

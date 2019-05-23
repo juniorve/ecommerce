@@ -16,6 +16,14 @@ export class ProveedorService {
     this.url = GLOBAL.url;
   }
 
+  getTipos(token) {
+
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': token });
+    let options = new RequestOptions({ headers: headers });
+
+    return this._http.get(this.url + 'tipos', options)
+      .map(res => res.json());
+  }
   saveProveedor(token, proveedor: Proveedor) {
 
     let json = JSON.stringify(proveedor);

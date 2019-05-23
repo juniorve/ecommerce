@@ -37,7 +37,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'categorias', component: CategoriasComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'principal', component: PrincipalComponent },
+  // { path: 'principal', component: PrincipalComponent },
   { path: '', redirectTo: '/principal', pathMatch: 'full' }
 ];
 

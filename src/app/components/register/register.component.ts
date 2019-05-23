@@ -28,14 +28,14 @@ export class RegisterComponent implements OnInit {
   tipoControl = new FormControl([Validators.required]);
   tipos = [
     { name: 'Usuario', valor: 'ROLE_USER' },
-    { name: 'Dueño de la empresa', valor: 'ROLE_ADMIN' },
+    { name: 'Administrador', valor: 'ROLE_ADMIN' },
     // { name: 'Buena', valor: 7.5 }
   ];
 
 
   constructor(private _userService: UserService, private _route: ActivatedRoute,
     private _router: Router) {
-    this.user = new User('', '', '', '', '', '', '', '', '', '', '', '');
+    this.user = new User(null,'', '', '', '', '', '', '', '', '');
 
   }
 
@@ -50,16 +50,21 @@ export class RegisterComponent implements OnInit {
   saveUser() {
     console.log(this.user);
     this._userService.saveUser(this.token, this.user).subscribe(
-      Response => {
-        if(!Response.user){
+      response => {
+        console.log(response);
+        if(!response.user){
           swal('Lo sentimos', 'No se pudo registrar su cuenta', 'warning');
         }else{
-          swal('Gracias por registrarse', 'Ya puede vivir una nueva experiencia', 'success');
-    this._router.navigate(['/login']);
+          swal('Gracias por registrarse', 'Ya puede vivir una nueva experiencia', 'success')
+          .then((saveUser)=>{
+            if(saveUser){
+              this._router.navigate(['/login']);
+            }
+          });
         }
       },
       error => {
-
+        console.log(error);
       }
     );
 

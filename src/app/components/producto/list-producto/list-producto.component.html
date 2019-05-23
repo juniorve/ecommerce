@@ -1,27 +1,40 @@
-<br><br>
-<section class="bg-light" id="portfolio">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h3 class="section-subheading text-muted">Lista de Productos</h3>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-4 col-xs-12  col-sm-6 portfolio-item" *ngFor="let producto of productos; let i=index">
-        <div class="todo">
-          <div class="portfolio-link">
-            <img class="img-fluid img-prop" (click)="upProducto(producto._id)" src="{{url+'get-img-producto/'+producto.imagen}}">
+<div class="contenedor">
+  <header class="title">
+    <h2><strong>
+        Lista de productos
+      </strong>
+    </h2>
+  </header>
+  <br>
+  <ng-container *ngFor="let producto of productos; let i=index">
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-md-4 image">
+            <img class="img-fluid img-prop" (click)="upProducto(producto._id)"
+              src="{{url+'get-img-producto/'+producto.imagen}}">
           </div>
-          <br>
-          <div class="portfolio-caption posicion">
-            <a (click)="upProducto(producto._id)" class="nav-link">
-              <h5 class="prop-title">{{producto.nombre}}</h5>
-            </a>
-            <p class="text-muted parrafo">{{producto.descripcion}}</p>
+          <div class="col-md-8 texto ">
+            <div class="col-md-8"><a class="enlace" (click)="upProveedor(proveedor._id)"><strong>
+                  <p class="desafio">{{producto.nombre}}</p>
+                </strong></a></div>
+            <div class="col-md-8"><label for="" class="p-text">Descripción:</label> <label class="text-2">
+                {{producto.descripcion}}</label></div>
+            <div class="col-md-8"><label for="" class="p-text">Marca:</label> <label class="text-2">
+                {{producto.marca}}</label></div>
+            <div class="col-md-8"><label for="" class="p-text">Material:</label> <label class="text-2">
+                {{producto.material}}</label></div>
+            <div class="col-md-8"> <label for="" class="p-text">Precio venta:</label> <label class="text-2">
+                {{producto.precioVenta}}</label></div>
+            <div class="col-md-8"><label for="" class="p-text">Cantidad actual:</label> <label class="text-2">
+                {{producto.cantidad}}</label></div>
+            <div class="col-md-8"> <label for="" class="p-text">Stock minimo:</label> <label class="text-2">
+                {{producto.stock_minimo}}</label></div>
           </div>
         </div>
-        <br>
       </div>
     </div>
-  </div>
-</section>
+    <br>
+  </ng-container>
+  <br>
+</div>

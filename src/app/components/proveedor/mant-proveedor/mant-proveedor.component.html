@@ -16,7 +16,7 @@
             <tr>
               <th>N°</th>
               <th>Nombre</th>
-              <th>Tipo de ropa</th>
+              <th>Tipo</th>
               <th>Celular</th>
               <th>Descripción</th>
               <th>Email</th>
@@ -28,7 +28,7 @@
             <tr *ngFor="let proveedor of proveedores; let i=index">
               <td scope="row">{{i+1}}</td>
               <td>{{proveedor.nombre}}</td>
-              <td>{{proveedor.tipo}}</td>
+              <td>{{proveedor.tipo.descripcion}}</td>
               <td>{{proveedor.celular}}</td>
               <td>{{proveedor.descripcion}}</td>
               <td>{{proveedor.email}}</td>
@@ -45,7 +45,7 @@
 
       
       <div class="boton">
-          <button class="btn btn-info nuevo" [routerLink]="['/principal']"><i
+          <button class="btn btn-info nuevo" [routerLink]="['/list-proveedor']"><i
             class="fa fa-arrow-left mas" aria-hidden="true"></i>
           <strong>Regresar inicio</strong></button>
         <button class="btn prov btn-nuevo" [routerLink]="['/new-proveedor']"><i

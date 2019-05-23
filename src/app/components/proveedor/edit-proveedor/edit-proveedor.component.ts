@@ -25,11 +25,7 @@ export class EditProveedorComponent implements OnInit {
   date = new FormControl(new Date());
   serializedDate = new FormControl((new Date()).toISOString());
   tipoControl = new FormControl([Validators.required]);
-  tipos = [
-    { name: 'ropa hombre' },
-    { name: 'ropa mujer' },
-    { name: 'accesorios' }
-  ];
+  tipos:any = [];
 
   public identity;
   public title: String = 'Edición de datos del proveedor';
@@ -65,6 +61,19 @@ export class EditProveedorComponent implements OnInit {
     });
   }
 
+  getTipos(){
+    console.log(this.token);
+    this._proveedorService.getTipos(this.token).subscribe(
+      res=>{
+        console.log(res);
+        this.tipos=res.tipos;
+      },
+      error=>{
+
+      }
+    );
+  }
+
   editProveedor() {
     this._proveedorService.updateProveedor(this.token, this.proveedorId, this.proveedor).subscribe(
       response => {
@@ -77,10 +86,14 @@ export class EditProveedorComponent implements OnInit {
             if (!this.filesToUpload) {
               swal(
                 "Proveedor modificado",
-                "El proveedor fue modificado correctamente",
-                "success"
-              );
-              this._router.navigate(["/mant-proveedor"]);
+                "El proveedor fue modificado correctamente"
+                ,{icon:"success",
+                closeOnClickOutside: false}
+              ).then((updateProveedor)=>{
+                if(updateProveedor){
+                  this._router.navigate(["/mant-proveedor"]);
+                }
+              });
             } else {
               this.makeFileRequest(
                 this.url + "upload-img-proveedor/" + response.proveedor._id,
@@ -89,11 +102,15 @@ export class EditProveedorComponent implements OnInit {
               ).then(
                 result => {
                   swal(
-                    "´Proveedor modificado",
-                    "El proveedor fue modificado correctamente",
-                    "success"
-                  );
-                  this._router.navigate(["/mant-proveedor"]);
+                    "Proveedor modificado",
+                    "El proveedor fue modificado correctamente"
+                    ,{icon:"success",
+                    closeOnClickOutside: false}
+                  ).then((updateProveedor)=>{
+                    if(updateProveedor){
+                      this._router.navigate(["/mant-proveedor"]);
+                    }
+                  });
                 },
                 error => {
                   console.log(error);
@@ -115,6 +132,7 @@ export class EditProveedorComponent implements OnInit {
         } else {
           this.proveedor = response.proveedor;
           console.log(this.proveedor);
+          this.getTipos();
           //    this.imagenTemp=this.restaurant.imagen;
         }
       },

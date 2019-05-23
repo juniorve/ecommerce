@@ -35,9 +35,10 @@ export class ListProductoComponent implements OnInit {
   
 
   getProductos()
-  {                  
+  {        
         this._productoService.getTProductos(this.token).subscribe(
             response =>{
+              console.log(response);
               if(!response.productos){
                 }else{
                     this.productos= response.productos;

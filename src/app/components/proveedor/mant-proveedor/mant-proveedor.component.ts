@@ -64,21 +64,32 @@ export class MantProveedorComponent implements OnInit {
 
   deleteProveedor(idProveedor: String) {
     console.log(idProveedor);
-    this._proveedorService.deleteProveedor(this.token, idProveedor).subscribe(
-      response => {
-        if (!response.proveedor) {
-          swal('Lo sientimos','El proveedor no pudo ser eliminado','warning');
-
-        } else {
-          swal('proveedor eliminado','Información del proveedor eliminada exitosamente','success');
-          this.getProveedores();
+    swal({
+      title: "Eliminar proveedor", text: "¿Usted esta seguro de eliminar el proveedor?", icon: "info",
+      buttons: ['Cancelar', 'Confirmar']
+    })
+      .then((deleteProveedor) => {
+        if(deleteProveedor){
+          this._proveedorService.deleteProveedor(this.token, idProveedor).subscribe(
+            response => {
+              if (!response.proveedor) {
+                swal('Lo sientimos','El proveedor no pudo ser eliminado','error');
+      
+              } else {
+                swal('proveedor eliminado','Información del proveedor eliminada exitosamente','success')
+                .then((deleteProv)=>{
+                  if(deleteProv)
+                  this.getProveedores();
+                });
+              }
+      
+            },
+            error => {
+      
+            }
+          );
         }
-
-      },
-      error => {
-
-      }
-    );
+      });
   }
 
   

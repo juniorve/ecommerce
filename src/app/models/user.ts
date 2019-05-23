@@ -1,17 +1,15 @@
 export class User {
     constructor(
-        public name: String,
-        public surname: String,
-        public ciudad: String,
-        public direccion: String,
-        public celular: String,
-        public descripcion: String,
-        public email: String,
-        public password: String,
-        public facebook: String,
-        public twiter: String,
-        public role: String,
-        public imagen: String
+        public dni: number,
+        public name: string,
+        public surname: string,
+        public ciudad: string,
+        public direccion: string,
+        public telefono: string,
+        public email: string,
+        public password: string,
+        public role: string,
+        public imagen: string
     ) {
 
     }

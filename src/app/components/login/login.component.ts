@@ -1,33 +1,63 @@
+import { ProductoService } from './../../services/producto.service';
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../services/user.service';
 import {User} from '../../models/user';
 import {Router,ActivatedRoute, Params} from '@angular/router';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [UserService]
+  providers: [UserService,ProductoService]
 })
 
 export class LoginComponent implements OnInit{
   public title = '';
   public user: User;
   public errorMessage;
+  public productos:any[]=[];
 
   public identity:any;
   public token;
 
-  constructor(private _userService: UserService, private _route:ActivatedRoute,
+  constructor(private _userService: UserService, private _route:ActivatedRoute,private _productoService:ProductoService,
               private _router:Router){
 
-      this.user = new User('','','','','','','','','','','','');
+      this.user = new User(null,'','','','','','','','','');
   }
 
   ngOnInit(){
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
   }
+
+  
+  getProductos()
+  {        
+        this._productoService.getTProductos(this.token).subscribe(
+            response =>{
+              console.log(response);
+              if(!response.productos){
+                }else{
+                    this.productos= response.productos;
+
+                    for(let item of this.productos){
+                      if(item.cantidad<=item.stock_minimo){
+                        console.log("entra1");
+                        swal("Atención","Tiene bajo stock del producto "+item.descripcion
+                        +" , stock actual "+item.cantidad +" unidades"
+                        ,"warning")
+                        console.log("entra");
+                      }
+                    }
+
+                 }  
+            },
+          error =>{
+          }
+     );
+    }
 
   loginUser(){
     console.log(this.user);
@@ -57,10 +87,10 @@ export class LoginComponent implements OnInit{
                             else{
                               // crear elemento en el localstorage para tener al token disponible
                               localStorage.setItem('token', token);
-
+                                  this.getProductos();
                                       //  this._router.navigate(['/mant-proveedor']);
                                        this._router.navigate(['/']);
-                                       this.user = new User('','','','','','','','','','','','');
+                                        this.user = new User(null,'','','','','','','','','');
                                       }
                               },
 

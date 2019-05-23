@@ -10,17 +10,19 @@
 			<span class="info">Adelante, configura las productos de tu empresa, puedes crearlos seleccionando el botón Agregar</span>
 
 			<div class="table-responsive lista" *ngIf="this.productos.length>0">
-				<table class="table table-hover tabla">
+				<table class="table table-bordered table-hover tabla">
 					<thead>
 						<tr class="theader">
 							<th>N°</th>
 							<th>Nombre</th>
 							<th>Descripción</th>
-							<th>Talla</th>
+							<th>Color</th>
+							<th>marca</th>
 							<th>Material</th>
-							<th>Envio</th>
 							<th>Precio Compra</th>
 							<th>Precio Venta</th>
+							<th>Stock minimo</th>
+							<th>Stock máximo</th>
 							<th>Cantidad</th>
 							<th>Acción</th>
 						</tr>
@@ -32,11 +34,13 @@
 							<td scope="row">{{i+1}}</td>
 							<td>{{producto.nombre}}</td>
 							<td>{{producto.descripcion}}</td>
-							<td>{{producto.talla}}</td>
+							<td>{{producto.color}}</td>
+							<td>{{producto.marca}}</td>
 							<td>{{producto.material}}</td>
-							<td>{{producto.envioInternacional}}</td>
-							<td>{{producto.precioCompra}}</td>
-							<td>{{producto.precioVenta}}</td>
+							<td>S/. {{producto.precioCompra}}</td>
+							<td>S/. {{producto.precioVenta}}</td>
+							<td>{{producto.stock_minimo}}</td>
+							<td>{{producto.stock_maximo}}</td>
 							<td>{{producto.cantidad}}</td>
 							<td>
 								<div class="btn-group">
@@ -51,7 +55,7 @@
 		</div>
 		<div class="botones">
 
-			<button mat-button class="btn btnprevious" [routerLink]="['/principal']">
+			<button mat-button class="btn btnprevious" [routerLink]="['/list-producto']">
 				<i class="fa fa-chevron-left previous" aria-hidden="true"></i>
 				Inicio</button>
 

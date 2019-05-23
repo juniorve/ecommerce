@@ -20,6 +20,7 @@ export class ViewProveedorComponent implements OnInit {
   public identity;
   public token;
   public url;
+  public tipos:any[]=[];
   public imagen: String;
   public proveedor: Proveedor;
   public _idProveedor: String;
@@ -36,8 +37,26 @@ export class ViewProveedorComponent implements OnInit {
 
   ngOnInit() {
     this.getIdProveedorUrL();
+    // this.getTipos();
   }
 
+  getTipos(){
+    console.log(this.token);
+    this._proveedorService.getTipos(this.token).subscribe(
+      res=>{
+        console.log(res);
+        this.tipos=res.tipos;
+        for(let item of res.tipos){
+          if(item._id=this.proveedor.tipo){
+              this.proveedor.tipo=item.descripcion;
+          }
+        }
+      },
+      error=>{
+
+      }
+    );
+  }
 
   getIdProveedorUrL() {
     this._route.params.forEach((params: Params) => {
@@ -54,10 +73,12 @@ export class ViewProveedorComponent implements OnInit {
   getProveedor() {
     this._proveedorService.getProveedor(this.token, this._idProveedor).subscribe(
       response => {
+        console.log(response);
         if (!response.proveedor) {
           //  this.aletMessage
         } else {
           this.proveedor = response.proveedor;
+          this.getTipos();
           this.imagen = this.proveedor.imagen;  
           console.log(this.proveedor);
         }

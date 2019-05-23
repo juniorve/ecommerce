@@ -40,6 +40,7 @@ getProductos()
 {                  
       this._productoService.getProductos(this.token, this.identity._id).subscribe(
           response =>{
+            console.log(response);
             if(!response.productos){
               }else{
                   this.productos= response.productos;
@@ -52,18 +53,31 @@ getProductos()
   }
   
   deleteProducto(idProducto:any){
-    this._productoService.deleteProducto(this.token, idProducto).subscribe(
-      response =>{
-          if(!response.producto){
-            swal('Error','El producto no se elimino correctamente','warning');
-          }else{
-            this.getProductos();
-            swal('Producto eliminado','El producto se elimino correctamente','success');
-          }
-        },
-          error =>{
+
+    swal({
+      title: "Eliminar producto", text: "¿Usted esta seguro de eliminar el producto?", icon: "info",
+      buttons: ['Cancelar', 'Confirmar']
+    })
+      .then((deleteProd) => {
+        if(deleteProd){
+          this._productoService.deleteProducto(this.token, idProducto).subscribe(
+            response =>{
+                if(!response.producto){
+                  swal('Error','El producto no se elimino correctamente','warning');
+                }else{
+                  swal('Producto eliminado','El producto se elimino correctamente','success')
+                  .then((deleteProd)=>{
+                    if(deleteProd){
+                      this.getProductos();
+                    }
+                  });
+                }
+              },
+                error =>{
+              }
+            );
         }
-      );
+      });
   }
 }
  

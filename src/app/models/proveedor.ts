@@ -1,12 +1,12 @@
 export class Proveedor {
   constructor(
-    public nombre: String,
-    public tipo: String,
-    public celular: String,
-    public email: String,
-    public direccion: String,
-    public descripcion: String,
-    public imagen: String,
-    public user: String
+    public nombre: string,
+    public tipo: string,
+    public telefono: string,
+    public email: string,
+    public direccion: string,
+    public descripcion: string,
+    public imagen: string,
+    public user: string
   ){}
 }
