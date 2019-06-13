@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import swal from 'sweetalert';
 @Component({
@@ -6,13 +7,13 @@ import swal from 'sweetalert';
   styleUrls: ['./carrito.component.css']
 })
 export class CarritoComponent implements OnInit {
-
-  constructor() { }
+public total="400.00";
+  constructor(private _router:Router) { }
 
   ngOnInit() {
   }
 
   payProducts(){
-    swal("Pago realizado","El pago fue efectuado con exito","success");
+    this._router.navigate(['/pagar-total/'+this.total]);
   }
 }

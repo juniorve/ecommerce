@@ -14,6 +14,6 @@ export class CategoriasComponent implements OnInit {
   }
 
   addProducto(){
-    swal("Producto agregado","El producto fue agregado al carrito","info");
+    swal("Producto agregado","El producto fue agregado al carrito","success");
   }
 }

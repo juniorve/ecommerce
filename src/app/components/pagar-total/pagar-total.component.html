@@ -1,0 +1,113 @@
+<div class="contenedor col-md-12 ">
+ 
+  <div class="container">
+
+    <div class="title">
+      <h4>{{title}}</h4>
+    </div>
+
+    <form [formGroup]="totalForm" class="formulario">
+      <div class="container">
+        <div class="row">
+         
+          <div class="col-sm-12 name">
+            <mat-form-field appearance="outline" class="texto">
+              <mat-label>Nombres y apellidos</mat-label>
+              <input matInput  type="text" formControlName="nombre" #nombre
+                maxlength="100" autocomplete="off" required>
+              <mat-hint align="end">{{nombre.value.length}} /100</mat-hint>
+              <mat-error *ngIf="totalForm.controls['nombre'].hasError('required')">
+                  Nombre es <strong>obligatorio</strong>
+                </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-sm-6">
+            <mat-form-field appearance="outline" class="texto">
+              <mat-label>DNI</mat-label>
+              <input matInput type="number" formControlName="dni" #dni maxlength="8" autocomplete="off"
+                required>
+              <mat-hint align="end">{{dni.value.length}} /8</mat-hint>
+              <mat-error *ngIf="totalForm.controls['dni'].hasError('required')">
+                  DNI es <strong>obligatorio</strong>
+                </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-sm-6">
+            <mat-form-field appearance="outline" class="texto">
+              <mat-label>Número de cuenta</mat-label>
+              <input matInput formControlName="numCuenta" #numCuenta
+                maxlength="20" autocomplete="off" required>
+              <mat-hint align="end">{{numCuenta.value.length}} /20</mat-hint>
+              <mat-error *ngIf="totalForm.controls['numCuenta'].hasError('required')">
+                  Número de cuenta es <strong>obligatorio</strong>
+                </mat-error>
+            </mat-form-field>
+          </div>
+
+
+          <div class="col-sm-6">
+            <mat-form-field appearance="outline" class="texto">
+              <mat-label>CSV de cuenta</mat-label>
+              <input matInput formControlName="codigo" #codigo type="number"
+                maxlength="20" autocomplete="off" required>
+              <mat-hint align="end">{{codigo.value.length}} /20</mat-hint>
+              <mat-error *ngIf="totalForm.controls['codigo'].hasError('required')">
+                  CSV de cuenta es <strong>obligatorio</strong>
+                </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-sm-6">
+              <mat-form-field appearance="outline" class="texto">
+                <mat-label>Fecha de vencimiento</mat-label>
+                <input matInput formControlName="vencimiento" #vencimiento type="text"
+                  maxlength="20" autocomplete="off" required>
+                <mat-hint align="end">{{vencimiento.value.length}} /20</mat-hint>
+                <mat-error *ngIf="totalForm.controls['vencimiento'].hasError('required')">
+                    Fecha de vencimiento de cuenta es <strong>obligatoria</strong>
+                  </mat-error>
+              </mat-form-field>
+            </div>
+
+
+          <div class="col-sm-6">
+            <mat-form-field appearance="outline" class="texto">
+              <mat-label>email</mat-label>
+              <input matInput formControlName="email" type="text" 
+               #email maxlength="40" autocomplete="off" required>
+              <mat-hint align="end">{{email.value.length}} /40</mat-hint>
+              <mat-error *ngIf="totalForm.controls['email'].hasError('email') && !totalForm.controls['email'].hasError('required')">
+                  Ingrese un correo correcto
+                </mat-error>
+              <mat-error *ngIf="totalForm.controls['email'].hasError('required')">
+                  Email es <strong>obligatorio</strong>
+                </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-sm-6">
+            <mat-form-field appearance="outline" class="texto">
+              <mat-label>total a pagar</mat-label>
+              <input matInput formControlName="total" type="text" #total maxlength="20" autocomplete="off"
+                required>
+              <mat-hint align="end">{{total.value.length}} /20</mat-hint>
+            </mat-form-field>
+          </div>
+
+        <div class="boton col-sm-12">
+          <button class="btn volver btnsave" [routerLink]="['/carrito']" type="button">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            Regresar</button>
+          <button class="btn guardar  btnsave" (click)="saveTotal()" type="submit">
+            <i class="fa fa-floppy-o" aria-hidden="true"></i>
+            Realizar pago</button>
+        </div>
+      </div>
+    </div>
+
+    </form>
+  </div>
+  <br>
+</div>

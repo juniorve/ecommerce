@@ -29,6 +29,7 @@ import { GanananciasComponent } from './components/ingresos/ganancias/ganancias.
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { ShowProductoComponent } from './components/show-producto/show-producto.component';
+import { PagarTotalComponent } from './components/pagar-total/pagar-total.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { ShowProductoComponent } from './components/show-producto/show-producto.
     EditProductoComponent,
     CarritoComponent,
     ContactoComponent,
-    ShowProductoComponent
+    ShowProductoComponent,
+    PagarTotalComponent
   ],
   imports: [
      MaterialModule, 

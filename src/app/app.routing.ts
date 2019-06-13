@@ -1,3 +1,4 @@
+import { PagarTotalComponent } from './components/pagar-total/pagar-total.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { ShowProductoComponent } from './components/show-producto/show-producto.component';
 import { EditProductoComponent } from './components/producto/edit-producto/edit-producto.component';
@@ -43,6 +44,7 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'principal', component: PrincipalComponent },
   { path: 'show-producto', component: ShowProductoComponent },
+  { path: 'pagar-total/:total', component: PagarTotalComponent },
   { path: 'carrito', component: CarritoComponent },
   { path: '', redirectTo: '/principal', pathMatch: 'full' }
 ];

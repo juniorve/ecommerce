@@ -128,7 +128,7 @@
           <ul class="tabs d-flex flex-sm-row flex-column align-items-left align-items-md-center justify-content-center">
             <li class="tab active" data-active-tab="tab_1"><span>Descripción</span></li>
             <li class="tab" data-active-tab="tab_2"><span>Información Adicional</span></li>
-            <li class="tab" data-active-tab="tab_3"><span>Comentarios (2)</span></li>
+            <li class="tab" data-active-tab="tab_3"><span>Comentarios ({{comentarios.length}})</span></li>
           </ul>
         </div>
       </div>
@@ -191,10 +191,10 @@
               <div class="tab_title reviews_title">
                 <h4>Comentarios (2)</h4>
               </div>
-              <div class="user_review_container d-flex flex-column flex-sm-row">
+              <div class="user_review_container d-flex flex-column flex-sm-row" *ngFor="let comentario of comentarios">
                 <div class="user">
                   <div class="user_pic">
-                    <img class="user_pic" src="assets/images/productos/foto1.jpg" alt="">
+                    <img class="user_pic" [src]="comentario.ruta" alt="">
                   </div>
                   <div class="user_rating">
                     <ul class="star_rating">
@@ -207,14 +207,13 @@
                   </div>
                 </div>
                 <div class="review">
-                  <div class="review_date">27 Febrero 2019</div>
-                  <div class="user_name">Manuela Cervantes</div>
-                  <p>Compre el juego de cocina hace poco, pero la calidad es increible y ha sido
-                    la mejor elección.</p>
+                  <div class="review_date">{{comentario.fecha}}</div>
+                  <div class="user_name">{{comentario.name}}</div>
+                  <p>{{comentario.descripcion}}</p>
                 </div>
               </div>
 
-              <div class="user_review_container d-flex flex-column flex-sm-row">
+          <!--     <div class="user_review_container d-flex flex-column flex-sm-row">
                 <div class="user">
                   <div class="user_pic">
                     <img class="user_pic" src="assets/images/productos/foto2.jpg" alt="">
@@ -235,17 +234,17 @@
                   <p>Decidi aprovechar la oferta y el hermoso diseño me enamoro, soy la envidia
                     entre mis amigas.</p>
                 </div>
-              </div>
+              </div> -->
             </div>
 
             <div class="col-lg-6 add_review_col">
               <div class="add_review">
-                <form id="review_form" action="post">
+                <form id="review_form" action="post" [formGroup]="comentarioForm">
                   <div>
                     <h1>Agregar una opinión</h1>
                     <input id="review_name" class="form_input input_name" type="text" name="name" placeholder="Nombre*"
-                      required="required" data-error="Name is required.">
-                    <input id="review_email" class="form_input input_email" type="email" name="email"
+                      required="required" data-error="Name is required." formControlName="name">
+                    <input id="review_email" class="form_input input_email" type="email" name="email" formControlName="email"
                       placeholder="Email*" required="required" data-error="Valid email is required.">
                   </div>
                   <div>
@@ -257,12 +256,12 @@
                       <li><i class="fa fa-star" aria-hidden="true"></i></li>
                       <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
                     </ul>
-                    <textarea id="review_message" class="input_review" name="message" placeholder="Escribe tu opinión"
+                    <textarea formControlName="descripcion" id="review_message" class="input_review" name="message" placeholder="Escribe tu opinión"
                       rows="4" required data-error="Please, leave us a review."></textarea>
                   </div>
                   <div class="text-left text-sm-right">
-                    <button id="review_submit" type="submit" class="red_button review_submit_btn trans_300"
-                      value="Submit">Enviar</button>
+                    <button id="review_submit" type="submit" class="red_button review_submit_btn trans_300" (click)="addComentario()"
+                      >Enviar</button>
                   </div>
                 </form>
               </div>
