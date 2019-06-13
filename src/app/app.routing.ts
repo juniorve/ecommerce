@@ -1,3 +1,5 @@
+import { CarritoComponent } from './components/carrito/carrito.component';
+import { ShowProductoComponent } from './components/show-producto/show-producto.component';
 import { EditProductoComponent } from './components/producto/edit-producto/edit-producto.component';
 import { ListProductoComponent } from './components/producto/list-producto/list-producto.component';
 import { CategoriasComponent } from './components/categorias/categorias.component';
@@ -40,6 +42,8 @@ const appRoutes: Routes = [
   { path: 'categorias', component: CategoriasComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'principal', component: PrincipalComponent },
+  { path: 'show-producto', component: ShowProductoComponent },
+  { path: 'carrito', component: CarritoComponent },
   { path: '', redirectTo: '/principal', pathMatch: 'full' }
 ];
 

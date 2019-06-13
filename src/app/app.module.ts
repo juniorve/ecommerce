@@ -26,6 +26,9 @@ import { ViewProveedorComponent } from './components/proveedor/view-proveedor/vi
 import { NewProductoComponent } from './components/producto/new-producto/new-producto.component';
 import { ListProductoComponent } from './components/producto/list-producto/list-producto.component';
 import { GanananciasComponent } from './components/ingresos/ganancias/ganancias.component';
+import { CarritoComponent } from './components/carrito/carrito.component';
+import { ContactoComponent } from './components/contacto/contacto.component';
+import { ShowProductoComponent } from './components/show-producto/show-producto.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,10 @@ import { GanananciasComponent } from './components/ingresos/ganancias/ganancias.
     NewProductoComponent,
     ListProductoComponent,
     GanananciasComponent,
-    EditProductoComponent
+    EditProductoComponent,
+    CarritoComponent,
+    ContactoComponent,
+    ShowProductoComponent
   ],
   imports: [
      MaterialModule, 

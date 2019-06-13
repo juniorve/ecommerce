@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-categorias',
@@ -12,4 +13,7 @@ export class CategoriasComponent implements OnInit {
   ngOnInit() {
   }
 
+  addProducto(){
+    swal("Producto agregado","El producto fue agregado al carrito","info");
+  }
 }
