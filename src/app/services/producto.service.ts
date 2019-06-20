@@ -46,12 +46,12 @@ export class ProductoService {
       .map(res => res.json());
   }
 
-  getTProductos(token) {
+  getTProductos() {
 
-    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': token });
+    let headers = new Headers({ 'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers });
 
-    return this._http.get(this.url + 'getproductos', options)
+    return this._http.get(this.url + 'getProductos', options)
       .map(res => res.json());
   }
 

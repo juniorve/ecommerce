@@ -39,8 +39,9 @@ const appRoutes: Routes = [
       {path:'list-producto', component: ListProductoComponent}
      ]
   },
-  { path: 'login', component: LoginComponent },
   { path: 'categorias', component: CategoriasComponent },
+  // { path: '', component: PrincipalComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'principal', component: PrincipalComponent },
   { path: 'show-producto', component: ShowProductoComponent },

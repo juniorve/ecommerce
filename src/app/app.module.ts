@@ -30,7 +30,7 @@ import { CarritoComponent } from './components/carrito/carrito.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { ShowProductoComponent } from './components/show-producto/show-producto.component';
 import { PagarTotalComponent } from './components/pagar-total/pagar-total.component';
-
+import {NgBusyModule} from 'ng-busy';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +58,7 @@ import { PagarTotalComponent } from './components/pagar-total/pagar-total.compon
     PagarTotalComponent
   ],
   imports: [
-     MaterialModule, 
+     MaterialModule,
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
@@ -66,6 +66,8 @@ import { PagarTotalComponent } from './components/pagar-total/pagar-total.compon
     routing,
     OverlayModule, ReactiveFormsModule,
 
+    // BUSY
+    NgBusyModule
     // ProveedorModule
   ],
   providers: [appRoutingProviders],

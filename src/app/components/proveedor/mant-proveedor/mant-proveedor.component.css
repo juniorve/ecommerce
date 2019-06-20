@@ -140,10 +140,11 @@ tr {
 .titulo{
     min-height: 100px;
     display: block;
-    padding-top: 40px;
+    padding-top: 31px;
     background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
     margin: 0 auto;
     text-align: center;
+    margin-top: 28px;
 }
 
 .titulo h3{

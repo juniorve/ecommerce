@@ -120,19 +120,26 @@ tr {
     margin: 0 auto; 
     box-shadow: 2px 2px 2px 2px silver;
 }
-
+ 
+.acciones .btn{
+    cursor: pointer
+}
 .cabecera{
     background: linear-gradient(to right,#008B8B,#20B2AA, #48D1CC );
-    color:white;
+    color: white;
     margin-left: -15px;
     margin-right: -15px;
-    padding-top: 12px;
+    padding-top: 24px;
     padding-bottom: 12px;
     box-shadow: 2.5px 2.5px 2.5px 0px silver;
+    margin-top: 20px;
+    height: 82px;
 }
 
-.cabecera h5{
+.cabecera h3{
     margin-left: 10px;
+    color: white;
+    font-weight: bold;
 }
 
 .opciones{

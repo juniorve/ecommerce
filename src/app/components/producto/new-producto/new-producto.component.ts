@@ -32,6 +32,32 @@ export class NewProductoComponent implements OnInit {
     { name: 'No' },
   ];
 
+  colores=[
+    {nombre:"Rojo",value:"Rojo"},
+    {nombre:"Plateado",value:"Plateado"},
+    {nombre:"Negro",value:"Negro"},
+    {nombre:"Azul",value:"Azul"},
+    {nombre:"Blanco",value:"Blanco"}
+  ];
+
+  tipos=[
+    {nombre:"Olla",value:"Olla"},
+    {nombre:"Cubiertos",value:"Cubiertos"},
+    {nombre:"Cafetera",value:"Cafetera"},
+    {nombre:"Batidora",value:"Batidora"},
+    {nombre:"Vajillas",value:"Vajillas"},
+    {nombre:"Hervidor",value:"Hervidor"},
+    {nombre:"Set completo",value:"Set completo"}
+  ];
+
+  marcas=[
+    {nombre:"Oster",value:"Oster"},
+    {nombre:"Tramontina",value:"Tramontina"},
+    {nombre:"Record",value:"Record"},
+    {nombre:"Bosh",value:"Bosh"},
+    {nombre:"T-Fal",value:"T-Fal"},
+    {nombre:"Hervidor",value:"Hervidor"}
+  ];
   // date = new FormControl(new Date());
   // serializedDate = new FormControl((new Date()).toISOString());
   public identity;
@@ -50,7 +76,7 @@ export class NewProductoComponent implements OnInit {
     this.url = GLOBAL.url;
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
-    this.producto = new Producto('',null,null,null,null,null,'','','','','','',this.identity._id,'');
+    this.producto = new Producto('',null,null,null,null,null,'','','','','','','','','','',this.identity._id,'');
   }
 
   ngOnInit() { 

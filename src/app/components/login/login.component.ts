@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit{
   
   getProductos()
   {        
-        this._productoService.getTProductos(this.token).subscribe(
+        this._productoService.getTProductos().subscribe(
             response =>{
               console.log(response);
               if(!response.productos){

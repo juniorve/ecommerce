@@ -3,10 +3,10 @@
 
 	<div class="container todo">
 		<div class="cabecera">
-			<h5>Administración de Productos</h5>
+			<h3>Administración de Productos</h3>
 		</div>
 		<br>
-		<div class="col-xl-10 offset-xl-1">
+		<div class="col-sm-12">
 			<span class="info">Adelante, configura las productos de tu empresa, puedes crearlos seleccionando el botón
 				Agregar</span>
 
@@ -43,7 +43,7 @@
 							<td>{{producto.stock_maximo}}</td>
 							<td>{{producto.cantidad}}</td>
 							<td>
-								<div class="btn-group">
+								<div class="btn-group acciones">
 									<button class="btn btn-default" (click)="editProducto(producto._id)"><span
 											class="fa fa-pencil"></span></button>
 									<button class="btn btn-danger" (click)="deleteProducto(producto._id)"><span
