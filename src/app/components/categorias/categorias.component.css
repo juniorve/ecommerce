@@ -11,6 +11,17 @@
     margin-top: 40px;
 } */
 
+.red_button:hover
+{
+    background: rgb(236, 49, 52) !important;
+}
+
+.red_button{
+    padding: 7px;
+    height: 34px !important;
+    margin-top: 5px;
+}
+
 .sidebar_categories,.checkboxes{
     display: table-caption !important;
 }
@@ -38,10 +49,6 @@
 	background: black;
 } 
 
-.red_button:hover
-{
-	background: rgb(236, 49, 52) !important;
-}
 
 .fa-plus-circle{
     font-size: 23px;
@@ -61,11 +68,6 @@
 	transition: all 0.3s ease;
 }
 
-.red_button{
-    padding: 7px;
-    height: 34px !important;
-    margin-top: 5px;
-}
 .addProd{
     color: white !important;
     cursor: pointer;

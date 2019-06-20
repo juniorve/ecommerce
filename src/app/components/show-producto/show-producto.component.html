@@ -81,19 +81,23 @@
           <div class="col-lg-3 thumbnails_col order-lg-1 order-2">
             <div class="single_product_thumbnails">
               <ul>
-                <li class="active"><img src="assets/images/productos/arrocera1.jpg" alt=""
+                <li class="active"><img src="{{url+'get-img-producto/'+producto.imagen}}" alt=""
                     data-image="assets/images/productos/arrocera1.jpg"></li>
-                <li><img src="assets/images/productos/cubiertos2.jpg" alt=""
-                    data-image="assets/images/productos/cubiertos2.jpg"></li>
-                <li><img src="assets/images/productos/hervidor2.jpg" alt=""
-                    data-image="assets/images/productos/hervidor2.jpg"></li>
+                <li><img src="{{url+'get-img-producto/'+producto.imagen}}" alt="" (click)="viewImage(url+'get-img-producto/'+producto.imagen)"
+                    data-image="url+'get-img-producto/'+producto.imagen"></li>
+                <li><img src="{{url+'get-img-producto/'+producto.imagen}}" alt=""
+                    data-image="url+'get-img-producto/'+producto.imagen"></li>
               </ul>
             </div>
           </div>
           <div class="col-lg-9 image_col order-lg-2 order-1">
             <div class="single_product_image">
-              <div class="single_product_image_background"
-                style="background-image:url(assets/images/productos/arrocera1.jpg)"></div>
+              <!-- <div class="single_product_image_background"
+              [ngStyle]="{'background-image':'url('+url+'get-img-producto/'+producto.imagen+')'}"
+                ></div> -->
+                <div class="single_product_image_background"
+              [ngStyle]="{'background-image':'url('+url+'get-img-producto/'+producto.imagen+')'}"
+                ></div>
             </div>
           </div>
         </div>
@@ -102,15 +106,14 @@
     <div class="col-lg-5">
       <div class="product_details">
         <div class="product_details_title">
-          <h2>Set de juego de cocina</h2>
-          <p>Si quieres resaltar entre las demas con la mejor coleccion de cocina que lanzamos al mercado
-            ,este set es para ti, con la mejor calidad y al mejor precio...</p>
+          <h2 class="nameProd">{{producto.nombre}}</h2>
+          <p>{{producto.descripcion}}...</p>
         </div>
         <div class="free_delivery d-flex flex-row align-items-center justify-content-center">
           <span class="ti-truck"></span><span>ENTREGA GRATIS</span>
         </div>
-        <div class="original_price">S/.629.99</div>
-        <div class="product_price">S/.495.00</div>
+        <!-- <div class="original_price">S/.629.99</div> -->
+        <div class="product_price">S/.{{producto.precioVenta}}</div>
         <ul class="star_rating">
           <li><i class="fa fa-star" aria-hidden="true"></i></li>
           <li><i class="fa fa-star" aria-hidden="true"></i></li>
@@ -118,14 +121,14 @@
           <li><i class="fa fa-star" aria-hidden="true"></i></li>
           <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
         </ul>
-        <div class="product_color">
+        <!-- <div class="product_color">
           <span>Seleccionar el color: </span>
           <ul>
             <li style="background: #e54e5d"></li>
             <li style="background: #252525"></li>
             <li style="background: #60b3f3"></li>
           </ul>
-        </div>
+        </div> -->
         <div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">
           <span>Cantidad:</span>
           <div class="quantity_selector">
@@ -133,9 +136,9 @@
             <span id="quantity_value">1</span>
             <span class="plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
           </div>
-          <div class="red_button add_to_cart_button"><a href="#">agregar al carrito</a></div>
-          <div class="product_favorite d-flex flex-column align-items-center justify-content-center">
-          </div>
+          <div class="red_button"><a class="addProd" (click)="addProducto(producto)">
+              agregar al carrito
+          </a></div>
         </div>
       </div>
     </div>
@@ -165,27 +168,28 @@
                 <h4>Descripción</h4>
               </div>
               <div class="tab_text_block">
-                <h2>Olla arrocera de acero</h2>
-                <p>Hecho pensando en ofrecer la mejor calidad posible...</p>
+                <h2>{{producto.descripcion1}}</h2>
+                <!-- <p>Hecho pensando en ofrecer la mejor calidad posible...</p> -->
               </div>
               <div class="tab_image">
-                <img src="assets/images/productos/cubiertos.jpg" alt="">
+                <img src="{{url+'get-img-producto/'+producto.imagen}}" alt="">
               </div>
               <div class="tab_text_block">
-                <h2>Hervidor</h2>
-                <p>Para esta temporada de frio, un adecuado hervidor que caliente tus mañanas.</p>
+                  <h2>{{producto.descripcion2}}</h2>
+                <!-- <p>Para esta temporada de frio, un adecuado hervidor que caliente tus mañanas.</p> -->
               </div>
             </div>
             <div class="col-lg-5 offset-lg-2 desc_col">
               <div class="tab_image">
-                <img src="assets/images/productos/arrocera1.jpg" alt="">
+                <img src="{{url+'get-img-producto/'+producto.imagen}}" alt="">
               </div>
               <div class="tab_text_block">
-                <h2>Los mejores cubiertos</h2>
-                <p>Incluye un set de cubiertos del mejor material y con el mejor diseño.</p>
+                  <h2>{{producto.descripcion3}}</h2>
+                <!-- <h2>Los mejores cubiertos</h2> -->
+                <!-- <p>Incluye un set de cubiertos del mejor material y con el mejor diseño.</p> -->
               </div>
               <div class="tab_image desc_last">
-                <img src="assets/images/productos/hervidor1.jpg" alt="">
+                <img src="{{url+'get-img-producto/'+producto.imagen}}" alt="">
               </div>
             </div>
           </div>
@@ -197,12 +201,12 @@
               <div class="tab_title additional_info_title">
                 <h4>Información adicional</h4>
               </div>
-              <p> <strong> Color:</strong><span>Gold, Red</span></p>
-              <p><strong>Tamaño:</strong><span>Pequeño, mediano y grande</span></p>
-              <p><strong>Material:</strong><span>100% acero</span></p>
-              <p><strong>Envio internacional</strong><span>Si</span></p>
-              <p><strong>Descripción:</strong><span>Obten la mejor collección de nuestro juego de
-                  cocina.</span></p>
+              <p><strong>nombre:</strong><span>{{producto.nombre}}</span></p>
+              <p><strong>Tipo:</strong><span>{{producto.tipo}}</span></p>
+              <p> <strong> Color:</strong><span>{{producto.color}}</span></p>
+              <p><strong>Material:</strong><span>{{producto.material}}</span></p>
+              <p><strong>Envio internacional</strong><span>{{producto.envioInternacional}}</span></p>
+              <p><strong>Marca:</strong><span>{{producto.marca}}</span></p>
             </div>
           </div>
         </div>

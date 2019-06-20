@@ -5,3 +5,18 @@
 .scroller{
     overflow-y: auto !important;
 }
+
+.red_button:hover
+{
+    background: rgb(236, 49, 52) !important;
+    color: white;
+}
+
+.addProd{
+    color: white !important;
+    cursor: pointer;
+}
+
+.nameProd{
+    margin-top: 20px;
+}
