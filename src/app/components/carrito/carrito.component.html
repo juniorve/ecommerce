@@ -1,65 +1,61 @@
-<div class="header">
-    <div class="container">
-      <!-- <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/logow.png" alt="Metronic Shop UI" class="imglogo"></a> -->
-
-      <a [routerLink]="['/principal']" class="menu-op">Inicio</a>
-      <a [routerLink]="['/principal']" class="menu-op">Promociones</a>
-      <a [routerLink]="['/categorias']" class="menu-op">Comprar</a>
-      <a [routerLink]="['/login']" class="menu-op">Login</a>
-      <a [routerLink]="['/registro']" class="menu-op">Registro</a>
-      <!-- <a href="https://sandrasc3.github.io/proyectoVentas/mant-proveedor" class="menu-op">Proveedores</a> -->
-
-      <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
-      <div class="top-cart-block">
-        <div class="top-cart-info">
-          <a href="javascript:void(0);" class="top-cart-info-count">3 productos</a>
-          <a href="javascript:void(0);" class="top-cart-info-value">S/. 420</a>
-        </div>
-        <i class="fa fa-shopping-cart"></i>
-                      
-        <div class="top-cart-content-wrapper">
-          <div class="top-cart-content">
-            <ul class="scroller" style="height: 250px;">
-              <li>
-                <a href="shop-item.html"><img src="assets/images/productos/ollas.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                <span class="cart-content-count">x 1</span>
-                <strong><a href="shop-item.html">Set de ollas</a></strong>
-                <em>S/, 120</em>
-                <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-              </li>
-              <li>
-                <a href="shop-item.html"><img src="assets/images/productos/arrocera.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                <span class="cart-content-count">x 1</span>
-                <strong><a href="shop-item.html">Olla arrocera</a></strong>
-                <em>S/. 135</em>
-                <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-              </li>
-              <li>
-                <a href="shop-item.html"><img src="assets/images/productos/hervidor.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                <span class="cart-content-count">x 1</span>
-                <strong><a href="shop-item.html">Hervidor</a></strong>
-                <em>S/. 135</em>
-                <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-              </li>
-         <!--      <li>
-                <a href="shop-item.html"><img src="assets/images/productos/cafetera1.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                <span class="cart-content-count">x 1</span>
-                <strong><a href="shop-item.html">Cafetera</a></strong>
-                <em>S/. 135</em>
-                <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-              </li>
-              -->
-            </ul>
-            <div class="text-right">
-              <a href="shop-shopping-cart.html" class="btn btn-default">Ver Carrito</a>
-              <a href="shop-checkout.html" class="btn btn-primary">Pagar</a>
+<header class="header trans_300">
+    <!-- Main Navigation -->
+    <div class="main_nav_container">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-right">
+            <div class="logo_container">
+              <a href="">Ychicawa<span>Shop</span></a>
             </div>
+            <nav class="navbar">
+              <ul class="navbar_menu">
+                  <li><a [routerLink]="['/principal']">Inicio</a></li>
+                  <li><a [routerLink]="['/categorias']">Comprar</a></li>
+                  <li><a [routerLink]="['/login']">Login</a></li>
+                  <li><a [routerLink]="['/register']">Registro</a></li>
+                  <!-- <li><a [routerLink]="['/mant-proveedor']">Proveedores</a></li> -->
+                  <li><a href="https://juniorve.github.io/sis-ventas/contact.html">Contacto</a></li>
+              </ul>
+              <!--========== CARRITO ============-->
+              <div class="top-cart-block">
+                <div class="top-cart-info">
+                  <a href="javascript:void(0);" class="top-cart-info-count">{{maestroService.carritoProd.length}}
+                    productos</a>
+                  <a href="javascript:void(0);" *ngIf="maestroService.carritoProd.length>0"
+                    class="top-cart-info-value">S/. {{maestroService.sumaTotal}}</a>
+                </div>
+                <i class="fa fa-shopping-cart"></i>
+
+                <div class="top-cart-content-wrapper">
+                  <div class="top-cart-content">
+                    <ul class="scroller" style="height: 250px;">
+                      <li *ngFor="let producto of maestroService.carritoProd">
+                        <a href="shop-item.html"><img src="{{url+'get-img-producto/'+producto.imagen}}"
+                            alt="Rolex Classic Watch" width="37" height="34"></a>
+                        <span class="cart-content-count">x {{producto.cantidadCarrito}}</span>
+                        <strong><a href="shop-item.html">{{producto.nombre}}</a></strong>
+                        <em>S/. {{producto.precioVenta * producto.cantidadCarrito}}</em>
+                        <!-- <a href="javascript:void(0);" class="del-goods">&nbsp;</a> -->
+                      </li>
+
+                    </ul>
+                    <div class="text-right">
+                      <a [routerLink]="['/carrito']" class="btn btn-default">Ver Carrito</a>
+                      <a  (click)="payProducts(maestroService.sumaTotal)" class="btn btn-primary">Pagar</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--========== CARRITO ============-->
+              <div class="hamburger_container">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+              </div>
+            </nav>
           </div>
-        </div>            
+        </div>
       </div>
     </div>
-  </div>
-
+  </header>
   <div class="main">
     <div class="container">
       <div class="row margin-bottom-40">
@@ -77,87 +73,33 @@
                   <th class="goods-page-price">Precio unitario</th>
                   <th class="goods-page-total" colspan="2">Total</th>
                 </tr>
-                <tr>
+                <tr *ngFor="let producto of maestroService.carritoProd">
                   <td class="goods-page-image">
-                    <a href="javascript:;"><img src="assets/images/productos/ollas.jpg" alt="Berry Lace Dress"></a>
+                    <a href="javascript:;"><img src="{{url+'get-img-producto/'+producto.imagen}}" alt="Berry Lace Dress"></a>
                   </td>
                   <td class="goods-page-description">
-                    <h3><a href="javascript:;">Set completo de ollas.</a></h3>
-                    <p><strong>- Material: acero</strong></p>
-                    <em>Más información</em>
+                    <h3><a href="javascript:;">{{producto.nombre}}</a></h3>
+                    <p><strong>- Material: {{producto.material}}</strong></p>
+                    <!-- <em>Más información</em> -->
                   </td>
                   <td class="goods-page-ref-no">
-                    Rojo
+                    {{producto.color}}
                   </td>
                   <td class="goods-page-quantity">
                     <div class="product-quantity">
-                        <input id="product-quantity" type="text" value="1" readonly class="form-control input-sm">
+                        <input id="product-quantity" type="text" value="{{producto.cantidadCarrito}}" readonly class="form-control input-sm">
                     </div>
                   </td>
                   <td class="goods-page-price">
-                    <strong><span>S/. </span>120.00</strong>
+                    <strong><span>S/. </span>{{producto.precioVenta}}</strong>
                   </td>
                   <td class="goods-page-total">
-                    <strong><span>S/. </span>120.00</strong>
+                    <strong><span>S/. </span>{{producto.precioVenta * producto.cantidadCarrito}}</strong>
                   </td>
                   <td class="del-goods-col">
                     <a class="del-goods" href="javascript:;">&nbsp;</a>
                   </td>
                 </tr>
-                <tr>
-                  <td class="goods-page-image">
-                    <a href="javascript:;"><img src="assets/images/productos/arrocera.jpg" alt="Berry Lace Dress"></a>
-                  </td>
-                  <td class="goods-page-description">
-                    <h3><a href="javascript:;">Olla arrocera</a></h3>
-                    <p><strong>- Material: acero inoxidable</strong></p>
-                    <em>Más información</em>
-                  </td>
-                  <td class="goods-page-ref-no">
-                    Gris
-                  </td>
-                  <td class="goods-page-quantity">
-                    <div class="product-quantity">
-                        <input id="product-quantity2" type="text" value="1" readonly class="form-control input-sm">
-                    </div>
-                  </td>
-                  <td class="goods-page-price">
-                    <strong><span>S/. </span>135.00</strong>
-                  </td>
-                  <td class="goods-page-total">
-                    <strong><span>S/. </span>135.00</strong>
-                  </td>
-                  <td class="del-goods-col">
-                    <a class="del-goods" href="javascript:;">&nbsp;</a>
-                  </td>
-                </tr>
-                <tr>
-                    <td class="goods-page-image">
-                      <a href="javascript:;"><img src="assets/images/productos/hervidor.jpg" alt="Berry Lace Dress"></a>
-                    </td>
-                    <td class="goods-page-description">
-                        <h3><a href="javascript:;">Hervidor electrico</a></h3>
-                        <p><strong>- Material: acero</strong></p>
-                        <em>Más información</em>
-                      </td>
-                      <td class="goods-page-ref-no">
-                        Gris
-                      </td>
-                    <td class="goods-page-quantity">
-                      <div class="product-quantity">
-                          <input id="product-quantity2" type="text" value="1" readonly class="form-control input-sm">
-                      </div>
-                    </td>
-                    <td class="goods-page-price">
-                      <strong><span>S/. </span>135.00</strong>
-                    </td>
-                    <td class="goods-page-total">
-                      <strong><span>S/. </span>135.00</strong>
-                    </td>
-                    <td class="del-goods-col">
-                      <a class="del-goods" href="javascript:;">&nbsp;</a>
-                    </td>
-                  </tr>
               </table>
               </div>
 
@@ -165,7 +107,7 @@
                 <ul>
                   <li>
                     <em>Sub total</em>
-                    <strong class="price"><span>S/. </span>390.00</strong>
+                    <strong class="price"><span>S/. </span>{{maestroService.sumaTotal}}.00</strong>
                   </li>
                   <li>
                     <em>COSTO DE ENVÍO</em>
@@ -173,13 +115,13 @@
                   </li>
                   <li class="shopping-total-price">
                     <em>Total</em>
-                    <strong class="price"><span>S/. </span>{{total}}</strong>
+                    <strong class="price"><span>S/. </span>{{maestroService.sumaTotal + 10}}.00</strong>
                   </li>
                 </ul>
               </div>
             </div>
-            <button class="btn btn-default" type="submit">Continuar comprando <i class="fa fa-shopping-cart"></i></button>
-            <button (click)="payProducts()" class="btn btn-primary" type="submit">Pagar <i class="fa fa-check"></i></button>
+            <button class="btn btn-default" [routerLink]="['/categorias']" type="submit">Continuar comprando <i class="fa fa-shopping-cart"></i></button>
+            <button (click)="payProducts(maestroService.sumaTotal)" class="btn btn-primary" type="submit">Pagar <i class="fa fa-check"></i></button>
           </div>
         </div> 
       </div> 

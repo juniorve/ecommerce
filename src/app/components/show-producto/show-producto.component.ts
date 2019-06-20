@@ -67,9 +67,16 @@ export class ShowProductoComponent implements OnInit,OnDestroy {
     );
   }
 
+  payProducts(sumaTotal){
+    this.router.navigate(['/pagar-total/'+sumaTotal+10]);
+  }
+  
   addProducto(producto: any) {
-    this.showCantidad();
+    producto.cantidadCarrito=parseFloat(document.getElementById("quantity_value").innerText); 
+    // this.showCantidad();
     // swal("Producto agregado","El producto fue agregado al carrito","success");
+
+    console.log(producto);
     this.maestroService.addCarrito(producto);
   }
   
@@ -177,7 +184,7 @@ export class ShowProductoComponent implements OnInit,OnDestroy {
 			});
     }
     
-    
+
 		if($('.plus').length && $('.minus').length)
 		{
 			var plus = $('.plus');

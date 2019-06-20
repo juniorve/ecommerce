@@ -11,12 +11,12 @@
             </div>
             <nav class="navbar">
               <ul class="navbar_menu">
-                <li><a [routerLink]="['/principal']">Inicio</a></li>
-                <li><a [routerLink]="['/principal']">Promociones</a></li>
-                <li><a [routerLink]="['/principal']">Comprar</a></li>
-                <li><a [routerLink]="['/login']">Login</a></li>
-                <li><a [routerLink]="['/register']">Registro</a></li>
-                <!-- <li><a href="https://juniorve.github.io/ecommerce/mant-proveedor">Proveedores</a></li> -->
+                  <li><a [routerLink]="['/principal']">Inicio</a></li>
+                  <li><a [routerLink]="['/categorias']">Comprar</a></li>
+                  <li><a [routerLink]="['/login']">Login</a></li>
+                  <li><a [routerLink]="['/register']">Registro</a></li>
+                  <!-- <li><a [routerLink]="['/mant-proveedor']">Proveedores</a></li> -->
+                  <li><a href="https://juniorve.github.io/sis-ventas/contact.html">Contacto</a></li>
               </ul>
               <!--========== CARRITO ============-->
               <div class="top-cart-block">
@@ -34,16 +34,16 @@
                       <li *ngFor="let producto of maestroService.carritoProd">
                         <a href="shop-item.html"><img src="{{url+'get-img-producto/'+producto.imagen}}"
                             alt="Rolex Classic Watch" width="37" height="34"></a>
-                        <span class="cart-content-count">x 1</span>
+                        <span class="cart-content-count">x {{producto.cantidadCarrito}}</span>
                         <strong><a href="shop-item.html">{{producto.nombre}}</a></strong>
-                        <em>S/. {{producto.precioVenta}}</em>
+                        <em>S/. {{producto.precioVenta * producto.cantidadCarrito}}</em>
                         <!-- <a href="javascript:void(0);" class="del-goods">&nbsp;</a> -->
                       </li>
 
                     </ul>
                     <div class="text-right">
                       <a [routerLink]="['/carrito']" class="btn btn-default">Ver Carrito</a>
-                      <a href="shop-checkout.html" class="btn btn-primary">Pagar</a>
+                      <a  (click)="payProducts(maestroService.sumaTotal)" class="btn btn-primary">Pagar</a>
                     </div>
                   </div>
                 </div>
@@ -62,12 +62,12 @@
     <div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
     <div class="hamburger_menu_content text-right">
       <ul class="menu_top_nav">
-        <li><a href="https://juniorve.github.io/ecommerce/principal">Inicio</a></li>
-        <li><a href="https://juniorve.github.io/ecommerce/principal">Promociones</a></li>
-        <li><a href="https://juniorve.github.io/ecommerce/principal">Comprar</a></li>
-        <li><a href="https://juniorve.github.io/ecommerce/login">Login</a></li>
-        <li><a href="https://juniorve.github.io/ecommerce/register">Registro</a></li>
-        <!-- <li><a href="https://juniorve.github.io/ecommerce/mant-proveedor">Proveedores</a></li> -->
+          <li><a [routerLink]="['/principal']">Inicio</a></li>
+          <li><a [routerLink]="['/categorias']">Comprar</a></li>
+          <li><a [routerLink]="['/login']">Login</a></li>
+          <li><a [routerLink]="['/register']">Registro</a></li>
+          <!-- <li><a [routerLink]="['/mant-proveedor']">Proveedores</a></li> -->
+          <li><a href="https://juniorve.github.io/sis-ventas/contact.html">Contacto</a></li>
       </ul>
     </div>
   </div>
@@ -83,10 +83,10 @@
               <ul>
                 <li class="active"><img src="{{url+'get-img-producto/'+producto.imagen}}" alt=""
                     data-image="assets/images/productos/arrocera1.jpg"></li>
-                <li><img src="{{url+'get-img-producto/'+producto.imagen}}" alt="" (click)="viewImage(url+'get-img-producto/'+producto.imagen)"
+                <!-- <li><img src="{{url+'get-img-producto/'+producto.imagen}}" alt="" (click)="viewImage(url+'get-img-producto/'+producto.imagen)"
                     data-image="url+'get-img-producto/'+producto.imagen"></li>
                 <li><img src="{{url+'get-img-producto/'+producto.imagen}}" alt=""
-                    data-image="url+'get-img-producto/'+producto.imagen"></li>
+                    data-image="url+'get-img-producto/'+producto.imagen"></li> -->
               </ul>
             </div>
           </div>
@@ -172,7 +172,8 @@
                 <!-- <p>Hecho pensando en ofrecer la mejor calidad posible...</p> -->
               </div>
               <div class="tab_image">
-                <img src="{{url+'get-img-producto/'+producto.imagen}}" alt="">
+                <!-- <img src="{{url+'get-img-producto/'+producto.imagen}}" alt=""> -->
+                <img src="../../../assets/images/productos/arrocera.jpg" alt="">
               </div>
               <div class="tab_text_block">
                   <h2>{{producto.descripcion2}}</h2>
@@ -181,7 +182,8 @@
             </div>
             <div class="col-lg-5 offset-lg-2 desc_col">
               <div class="tab_image">
-                <img src="{{url+'get-img-producto/'+producto.imagen}}" alt="">
+                <!-- <img src="{{url+'get-img-producto/'+producto.imagen}}" alt=""> -->
+                <img src="../../../assets/images/productos/cubiertos.jpg" alt="">
               </div>
               <div class="tab_text_block">
                   <h2>{{producto.descripcion3}}</h2>
@@ -189,7 +191,8 @@
                 <!-- <p>Incluye un set de cubiertos del mejor material y con el mejor diseño.</p> -->
               </div>
               <div class="tab_image desc_last">
-                <img src="{{url+'get-img-producto/'+producto.imagen}}" alt="">
+                <!-- <img src="{{url+'get-img-producto/'+producto.imagen}}" alt=""> -->
+                <img src="../../../assets/images/productos/hervidor.jpg" alt="">
               </div>
             </div>
           </div>

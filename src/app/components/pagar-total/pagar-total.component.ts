@@ -4,6 +4,7 @@ import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms'
 
 import * as _swal from 'sweetalert';
 import { SweetAlert } from 'sweetalert/typings/core';
+import { MaestroServiceService } from '../../services/maestro-service.service';
 const swal: SweetAlert = _swal as any;
 
 declare var JQuery: any;
@@ -30,7 +31,7 @@ export class PagarTotalComponent implements OnInit {
   public mensajeError: String;
   public imagenTemp: any;
 
-  constructor( private fb:FormBuilder,
+  constructor( private fb:FormBuilder, private maestroService:MaestroServiceService,
     private _route: ActivatedRoute,
     private _router: Router) {
     // this.url = GLOBAL.url;
@@ -54,6 +55,7 @@ export class PagarTotalComponent implements OnInit {
       (pagoProductos)=>{
         if(pagoProductos){
           // this.newForm();
+          this.maestroService.clean();
           this._router.navigate(['/principal']);
         }
       }

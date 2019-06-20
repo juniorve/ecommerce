@@ -1,3 +1,10 @@
  .product_name{
      margin-top: -10px;
  }
+ .top-cart-block{
+    margin: 0 !important;
+}
+
+.scroller{
+    overflow-y: auto !important;
+}

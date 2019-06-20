@@ -68,8 +68,13 @@ export class CategoriasComponent implements OnInit, OnDestroy {
   }
 
   addProducto(producto: any) {
+   producto.cantidadCarrito=1;
     // swal("Producto agregado","El producto fue agregado al carrito","success");
     this.maestroService.addCarrito(producto);
+  }
+
+  payProducts(sumaTotal){
+    this.router.navigate(['/pagar-total/'+sumaTotal+10]);
   }
 
   sendProducto(idProducto:any){
