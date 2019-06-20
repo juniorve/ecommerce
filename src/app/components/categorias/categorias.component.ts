@@ -6,11 +6,12 @@ import { GLOBAL } from '../../services/global';
 import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
 import { takeUntil } from 'rxjs/operators';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-categorias',
   templateUrl: './categorias.component.html',
   styleUrls: ['./categorias.component.css'],
-  providers: [ProductoService, MaestroServiceService],
+  providers: [ProductoService],
   // encapsulation: ViewEncapsulation.None
 })
 export class CategoriasComponent implements OnInit, OnDestroy {
@@ -49,7 +50,7 @@ export class CategoriasComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject<boolean> = new Subject();
 
   public tipoOrden: FormControl = new FormControl();
-  constructor(private _productoService: ProductoService, public maestroService: MaestroServiceService) {
+  constructor(private router:Router,private _productoService: ProductoService, public maestroService: MaestroServiceService) {
     this.url = GLOBAL.url;
     this.tipoOrden.setValue(1);
     this.precioRange.setValue(10);
@@ -69,6 +70,10 @@ export class CategoriasComponent implements OnInit, OnDestroy {
   addProducto(producto: any) {
     // swal("Producto agregado","El producto fue agregado al carrito","success");
     this.maestroService.addCarrito(producto);
+  }
+
+  sendProducto(idProducto:any){
+    this.router.navigate(['/show-producto/'+idProducto]);
   }
 
   viewRange() {

@@ -1,3 +1,4 @@
+import { MaestroServiceService } from './services/maestro-service.service';
 import { EditProductoComponent } from './components/producto/edit-producto/edit-producto.component';
 import { AdmProductoComponent } from './components/producto/adm-producto/adm-producto.component';
 import { MenuComponent } from './components/menu/menu.component';
@@ -70,7 +71,8 @@ import {NgBusyModule} from 'ng-busy';
     NgBusyModule
     // ProveedorModule
   ],
-  providers: [appRoutingProviders],
+  providers: [appRoutingProviders,
+  MaestroServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

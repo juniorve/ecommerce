@@ -27,9 +27,9 @@ export class ProductoService {
       .map(res => res.json());
   }
 
-  getProducto(token, productoId = null) {
-
-    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': token });
+  getProducto(productoId = null) {
+    console.log(productoId);
+    let headers = new Headers({ 'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers });
 
     return this._http.get(this.url + 'producto/' + productoId, options)

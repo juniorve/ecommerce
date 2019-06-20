@@ -99,7 +99,7 @@ public proveedores:Proveedor[]=[];
 
 
   getProducto() {
-    this._productoService.getProducto(this.token, this.productoId).subscribe(
+    this._productoService.getProducto(this.productoId).subscribe(
       response => {
         console.log(response);
         if (!response.producto) {

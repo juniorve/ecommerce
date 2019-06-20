@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 })
 export class MaestroServiceService {
   public busy:Subscription;
-  public carritoProd:any[]=[];
+  private carritoProd:any[]=[];
   public sumaTotal=0;
 
   constructor() { }

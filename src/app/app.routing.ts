@@ -44,7 +44,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'principal', component: PrincipalComponent },
-  { path: 'show-producto', component: ShowProductoComponent },
+  { path: 'show-producto/:id', component: ShowProductoComponent },
   { path: 'pagar-total/:total', component: PagarTotalComponent },
   { path: 'carrito', component: CarritoComponent },
   { path: '', redirectTo: '/principal', pathMatch: 'full' }
