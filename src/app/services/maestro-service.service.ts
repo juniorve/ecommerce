@@ -4,9 +4,9 @@ import { Subscription } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class MaestroServiceService {
+export class MaestroService{
   public busy:Subscription;
-  private carritoProd:any[]=[];
+  public carritoProd:any[]=[];
   public sumaTotal=0;
 
   constructor() { }

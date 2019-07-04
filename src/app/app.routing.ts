@@ -1,3 +1,4 @@
+import { VentasComponent } from './components/ingresos/ventas/ventas.component';
 import { PagarTotalComponent } from './components/pagar-total/pagar-total.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { ShowProductoComponent } from './components/show-producto/show-producto.component';
@@ -19,6 +20,7 @@ import { ViewProveedorComponent } from './components/proveedor/view-proveedor/vi
 import { AdmProductoComponent } from './components/producto/adm-producto/adm-producto.component';
 import { NewProductoComponent } from './components/producto/new-producto/new-producto.component';
 import { GanananciasComponent } from './components/ingresos/ganancias/ganancias.component';
+import { SugerenciasComponent } from './components/sugerencias/sugerencias.component';
 
 const appRoutes: Routes = [
     {
@@ -30,8 +32,10 @@ const appRoutes: Routes = [
       {path:'new-proveedor', component: NewProveedorComponent},
       {path:'list-proveedor', component: ListProveedorComponent},
       {path:'view-proveedor/:id', component: ViewProveedorComponent},
-      //ganancias
+      //resumen
       {path:'ganancias', component: GanananciasComponent},
+      {path:'ventas', component: VentasComponent},
+      {path:'list-sugerencias', component: SugerenciasComponent},
       //productos
       {path:'adm-producto', component: AdmProductoComponent},
       {path:'edit-producto/:id', component: EditProductoComponent},
@@ -47,6 +51,7 @@ const appRoutes: Routes = [
   { path: 'show-producto/:id', component: ShowProductoComponent },
   { path: 'pagar-total/:total', component: PagarTotalComponent },
   { path: 'carrito', component: CarritoComponent },
+  { path: 'sugerencias', component: SugerenciasComponent },
   { path: '', redirectTo: '/principal', pathMatch: 'full' }
 ];
 

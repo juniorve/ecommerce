@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ArgumentType } from '@angular/compiler/src/core';
 
-declare var $:any;
+declare var $:any; 
 
 
 @Component({
@@ -32,11 +32,10 @@ export class MenuComponent implements OnInit {
       this.nameUser = this.identity.name;
     }
 
-
-
-
     this.dropdown();
+ 
   }
+  
 
   dropdown() {
 

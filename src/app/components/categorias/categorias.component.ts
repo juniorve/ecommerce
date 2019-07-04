@@ -1,4 +1,3 @@
-import { MaestroServiceService } from './../../services/maestro-service.service';
 import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import swal from 'sweetalert';
 import { ProductoService } from '../../services/producto.service';
@@ -7,6 +6,7 @@ import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
 import { takeUntil } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { MaestroService } from '../../services/maestro-service.service';
 @Component({
   selector: 'app-categorias',
   templateUrl: './categorias.component.html',
@@ -50,7 +50,8 @@ export class CategoriasComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject<boolean> = new Subject();
 
   public tipoOrden: FormControl = new FormControl();
-  constructor(private router:Router,private _productoService: ProductoService, public maestroService: MaestroServiceService) {
+  constructor(private router:Router,private _productoService: ProductoService, 
+    public maestroService: MaestroService) {
     this.url = GLOBAL.url;
     this.tipoOrden.setValue(1);
     this.precioRange.setValue(10);
@@ -74,7 +75,8 @@ export class CategoriasComponent implements OnInit, OnDestroy {
   }
 
   payProducts(sumaTotal){
-    this.router.navigate(['/pagar-total/'+sumaTotal+10]);
+    let pagoTotal=sumaTotal+10;
+    this.router.navigate(['/pagar-total/'+pagoTotal]);
   }
 
   sendProducto(idProducto:any){
@@ -98,7 +100,6 @@ export class CategoriasComponent implements OnInit, OnDestroy {
   }
   getProductos() {
 
-    console.log("utilizando xd")
     this.maestroService.busy = this._productoService.getTProductos().pipe(takeUntil(this.ngUnsubscribe)).subscribe(
       response => {
         console.log(response);

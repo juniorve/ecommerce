@@ -1,3 +1,4 @@
+<div [ngBusy]="{busy: maestroService.busy, message: 'Cargando productos...', backdrop: true}"></div>
 <div class="section-tabla fondo">
 	<br>
 
@@ -10,50 +11,80 @@
 			<span class="info">Adelante, configura las productos de tu empresa, puedes crearlos seleccionando el botón
 				Agregar</span>
 
-			<div class="table-responsive lista" *ngIf="this.productos.length>0">
-				<table class="table table-bordered table-hover tabla">
-					<thead>
-						<tr class="theader">
-							<th>N°</th>
-							<th>Nombre</th>
-							<th>Descripción</th>
-							<th>Color</th>
-							<th>marca</th>
-							<th>Material</th>
-							<th>Precio Compra</th>
-							<th>Precio Venta</th>
-							<th>Stock minimo</th>
-							<th>Stock máximo</th>
-							<th>Cantidad</th>
-							<th>Acción</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr *ngFor="let producto of productos; let i=index" [ngClass]="{'table-active': i==_ind && sombrear==true
-												}" (click)="sombrear=true">
-							<td scope="row">{{i+1}}</td>
-							<td>{{producto.nombre}}</td>
-							<td>{{producto.descripcion}}</td>
-							<td>{{producto.color}}</td>
-							<td>{{producto.marca}}</td>
-							<td>{{producto.material}}</td>
-							<td>S/. {{producto.precioCompra}}</td>
-							<td>S/. {{producto.precioVenta}}</td>
-							<td>{{producto.stock_minimo}}</td>
-							<td>{{producto.stock_maximo}}</td>
-							<td>{{producto.cantidad}}</td>
-							<td>
-								<div class="btn-group acciones">
-									<button class="btn btn-default" (click)="editProducto(producto._id)"><span
-											class="fa fa-pencil"></span></button>
-									<button class="btn btn-danger" (click)="deleteProducto(producto._id)"><span
-											class="fa fa-trash"></span></button>
-								</div>
+			<p-dataTable [immutable]="false" columnResizeMode="expand" [resizableColumns]="true"
+				[reorderableColumns]="true"
+				[style]="{'overflow-x':'auto !important','max-width':'100% !important','padding':'10px'}" #dt
+				[value]="productos" [rows]="10" [responsive]="true" [paginator]="true" selectionMode="single"
+				[(selection)]="selectedPersona" (onRowSelect)="onRowSelect($event)" >
+				<p-column
+					[style]="{'white-space': 'nowrap !important', 'overflow': 'hidden', 'text-overflow': 'ellipsis', 'padding': '5px','margin': '-5px','font-family': 'Arimo, sans-serif','font-size': '12px','text-align':'center','width':'8%'}"
+					field="" header="Número" [sortable]="true" [filter]="true" filterPlaceholder="Filtrar por número">
+					<ng-template let-car="rowData" let-i="rowIndex" pTemplate="body">{{i+1}}</ng-template>
+				</p-column>
+				<p-column
+					[style]="{'white-space': 'nowrap !important', 'overflow': 'hidden', 'text-overflow': 'ellipsis', 'padding': '5px','margin': '-5px','font-family': 'Arimo, sans-serif','font-size': '12px'}"
+					field="descripcion" header="Descripción" [sortable]="true" [filter]="true"
+					filterPlaceholder="Filtrar por tipo Doc.">
+				</p-column>
+				<p-column
+					[style]="{'white-space': 'nowrap !important', 'overflow': 'hidden', 'text-overflow': 'ellipsis', 'padding': '5px','margin': '-5px','font-family': 'Arimo, sans-serif','font-size': '12px'}"
+					field="color" header="Color" [sortable]="true" [filter]="true"
+					filterPlaceholder="Filtrar por numero doc."></p-column>
+				<p-column
+					[style]="{'white-space': 'nowrap !important', 'overflow': 'hidden', 'text-overflow': 'ellipsis', 'padding': '5px','margin': '-5px','font-family': 'Arimo, sans-serif','font-size': '12px'}"
+					field="marca" header="Marca" [sortable]="true" [filter]="true"
+					filterPlaceholder="Filtrar por numero doc."></p-column>
+				<p-column
+					[style]="{'white-space': 'nowrap !important', 'overflow': 'hidden', 'text-overflow': 'ellipsis', 'padding': '5px','margin': '-5px','font-family': 'Arimo, sans-serif','font-size': '12px'}"
+					field="material" header="Material" [sortable]="true" [filter]="true"
+					filterPlaceholder="Filtrar por numero doc."></p-column>
 
-							</td>
-						</tr>
-				</table>
-			</div>
+				<p-column
+					[style]="{'white-space': 'nowrap !important', 'overflow': 'hidden', 'text-overflow': 'ellipsis', 'padding': '5px','margin': '-5px','font-family': 'Arimo, sans-serif','font-size': '12px'}"
+					field="" header="Precio compra" [sortable]="true" [filter]="true"
+					filterPlaceholder="Filtrar por haber precio compra">
+					<ng-template let-car="rowData" let-i="rowIndex" pTemplate="body">
+						S/. {{car.precioCompra}}
+					</ng-template>
+				</p-column>
+
+				<p-column
+					[style]="{'white-space': 'nowrap !important', 'overflow': 'hidden', 'text-overflow': 'ellipsis', 'padding': '5px','margin': '-5px','font-family': 'Arimo, sans-serif','font-size': '12px'}"
+					field="" header="Precio venta" [sortable]="true" [filter]="true"
+					filterPlaceholder="Filtrar por precio venta">
+					<ng-template let-car="rowData" let-i="rowIndex" pTemplate="body">
+						S/. {{car.precioVenta}}
+					</ng-template>
+				</p-column>
+
+				<p-column
+					[style]="{'white-space': 'nowrap !important', 'overflow': 'hidden', 'text-overflow': 'ellipsis', 'padding': '5px','margin': '-5px','font-family': 'Arimo, sans-serif','font-size': '12px'}"
+					field="stock_minimo" header="Stock minimo" [sortable]="true" [filter]="true"
+					filterPlaceholder="Filtrar por numero doc."></p-column>
+				<p-column
+					[style]="{'white-space': 'nowrap !important', 'overflow': 'hidden', 'text-overflow': 'ellipsis', 'padding': '5px','margin': '-5px','font-family': 'Arimo, sans-serif','font-size': '12px'}"
+					field="stock_maximo" header="Stock máximo" [sortable]="true" [filter]="true"
+					filterPlaceholder="Filtrar por numero doc."></p-column>
+				<p-column
+					[style]="{'white-space': 'nowrap !important', 'overflow': 'hidden', 'text-overflow': 'ellipsis', 'padding': '5px','margin': '-5px','font-family': 'Arimo, sans-serif','font-size': '12px'}"
+					field="cantidad" header="Cantidad" [sortable]="true" [filter]="true"
+					filterPlaceholder="Filtrar por numero doc."></p-column>
+
+				<p-column [bodyStyle]="false"
+					[style]="{'white-space': 'nowrap !important', 'overflow': 'hidden', 'text-overflow': 'ellipsis', 'padding': '5px','margin': '-5px','font-family': 'Arimo, sans-serif','font-size': '12px','text-align':'center'}"
+					field="" header="Acción" [sortable]="true">
+					<ng-template let-car="rowData" let-i="rowIndex" pTemplate="body">
+						<!-- <img class="img-options" src="../../../../../assets/icons/Artboard – 29.png" alt=""
+					  matTooltip="Eliminar item" (click)="removeItem(i)"> -->
+						<div class="btn-group acciones">
+							<button class="btn btn-default" (click)="editProducto(car._id)"><span
+									class="fa fa-pencil"></span></button>
+							<button class="btn btn-danger" (click)="deleteProducto(car._id)"><span
+									class="fa fa-trash"></span></button>
+						</div>
+					</ng-template>
+				</p-column>
+			</p-dataTable>
 		</div>
 		<div class="botones">
 

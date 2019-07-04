@@ -22,6 +22,18 @@ export class UserService {
 
   }
 
+  saveTotal( total: any) {
+    let json = JSON.stringify(total);
+    let params = json;
+
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+
+    return this._http.post(this.url + 'total', params, { headers: headers })
+      .map(res => res.json());
+  }
+
+
+
 
   getUser(token: String, id: any) {
     const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': token });

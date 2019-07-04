@@ -1,3 +1,4 @@
+import { MatDialog } from '@angular/material';
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GLOBAL } from '../../../services/global';
@@ -8,26 +9,29 @@ import { MaestroService } from '../../../services/maestro-service.service';
 import { Subject } from 'rxjs/Subject';
 import { takeUntil } from 'rxjs/operators';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { DialogComponent } from '../../dialog/dialog.component';
 declare const swal: any;
 
 
 @Component({
-  selector: 'app-ganancias',
-  templateUrl: './ganancias.component.html',
-  styleUrls: ['./ganancias.component.css'],
+  selector: 'app-ventas',
+  templateUrl: './ventas.component.html',
+  styleUrls: ['./ventas.component.css'],
   providers: [UserService, ComprobanteService, MaestroService]
 })
-export class GanananciasComponent implements OnInit, OnDestroy {
+export class VentasComponent implements OnInit, OnDestroy {
 
   public identity;
+  public selectedComprobante;
   public token;
   public url;
   private ngUnsubscribe: Subject<boolean> = new Subject();
-  public ganancias: any[] = [];
+  public comprobantes: any[] = [];
   public fechasForm: FormGroup;
   public date=new FormControl(new Date());
   public date1=new FormControl(new Date());
   constructor(
+    private dialog:MatDialog,
     private comprobanteService: ComprobanteService,
     private fb: FormBuilder,
     private _route: ActivatedRoute,
@@ -57,6 +61,27 @@ export class GanananciasComponent implements OnInit, OnDestroy {
     this.fechasForm.controls["fechaInicio"].setValue(this.date.value);
     this.fechasForm.controls["fechaFin"].setValue(this.date.value);
   }
+
+  onRowSelect(event){
+    this.openDialog();
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '1000px',
+      // height: '700px',
+      data: { tipo: "modalShowDetalle", comprobante: this.selectedComprobante }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+     /*  console.log(result);
+      if (result !== undefined) {
+      } else {
+        this.getComprobantes();
+      } */
+    });
+  }
+
   getComprobantes() {
     this.maestroService.busy = this.comprobanteService.getComprobantesxFecha(
       this.fechasForm.controls["fechaInicio"].value,this.fechasForm.controls["fechaFin"].value
@@ -64,18 +89,17 @@ export class GanananciasComponent implements OnInit, OnDestroy {
       .subscribe(
         res => {
           console.log(res);
+          this.comprobantes=[];
+          if(res.comprobantes){
+            this.comprobantes=res.comprobantes;
+            for(let comprobante of this.comprobantes){
+               comprobante.fecha = new Date(comprobante.fecha).toLocaleDateString('es-Pe',{day:"2-digit",month:"2-digit",year:"numeric"});
+            }
+          }
         },
         error => {
           console.log(error);
         }
       );
-
-    /*   this.ganancias=[
-    {usuario:'Juan Manuel', fecha:'16/10/2018', hora:'12:35', prenda:'Olla oster', cantidad:2, ganancia:'S/. 50'},
-    {usuario:'María Lopez', fecha:'21/10/2018', hora:'2:40', prenda:'Cocina a gas', cantidad:4, ganancia:'S/.90'},
-    {usuario:'Sofia Mendoza', fecha:'24/10/2018', hora:'3:10', prenda:'Olla a presión', cantidad:10, ganancia:'S/. 200'},
-    {usuario:'Joaquin Torres', fecha:'2/11/2018', hora:'4:30', prenda:'Set de cubiertos bosh', cantidad:5, ganancia:'S/ .140'},
-    {usuario:'Erika Chavez', fecha:'11/11/2018', hora:'11:14', prenda:'Utencilios de cocina', cantidad:8, ganancia:'S/. 100'},
-  ] */
   }
 }

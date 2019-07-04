@@ -27,8 +27,7 @@ export class ProductoService {
       .map(res => res.json());
   }
 
-  getProducto(productoId = null) {
-    console.log(productoId);
+  getProducto(productoId) {
     let headers = new Headers({ 'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers });
 

@@ -8,6 +8,15 @@
 .modal-title{
 	background-color: #7F8C8D;
 }
+
+.formFechas{
+ margin-top: 10px;
+ margin-bottom: -10px
+}
+
+.btn-show{
+    margin-top: 10px;
+  }
 /*
 tbody{
 	background-color: white;
@@ -190,3 +199,30 @@ h5{
   background: rgb(119,136,153,1);
   color: white;
 } 
+
+
+ /* ESTILOS PARA LA TABLA  */
+ .ui-datatable{
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    padding: 4px !important;
+    float: left;
+  }
+  
+  .ui-datatable-data td,.ui-datatable .ui-datatable-thead > tr > th{
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  padding: 5px !important;
+  margin: -5px !important;
+  font-family: Arimo,sans-serif  !important;
+  font-size: 12px !important;
+  }
+  
+  p-datatable{
+    max-width: 100%;
+    min-width: 100%;
+    display: flex;
+  }
+    /* /ESTILOS PARA LA TABLA  */
+  

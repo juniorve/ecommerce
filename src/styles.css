@@ -4,3 +4,11 @@
 header{
     margin-bottom: -100px !important; 
 }
+
+
+    /* ESTILOS PARA LA TABLA  */
+    .mat-dialog-container{
+        padding: 0 !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+      }

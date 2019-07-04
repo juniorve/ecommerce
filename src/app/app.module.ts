@@ -1,4 +1,4 @@
-import { MaestroServiceService } from './services/maestro-service.service';
+import { MaestroService } from './services/maestro-service.service';
 import { EditProductoComponent } from './components/producto/edit-producto/edit-producto.component';
 import { AdmProductoComponent } from './components/producto/adm-producto/adm-producto.component';
 import { MenuComponent } from './components/menu/menu.component';
@@ -32,11 +32,21 @@ import { ContactoComponent } from './components/contacto/contacto.component';
 import { ShowProductoComponent } from './components/show-producto/show-producto.component';
 import { PagarTotalComponent } from './components/pagar-total/pagar-total.component';
 import {NgBusyModule} from 'ng-busy';
+import { SugerenciasComponent } from './components/sugerencias/sugerencias.component';
+import { MAT_DATE_LOCALE } from '@angular/material';
+
+ import {DataTableModule} from 'primeng/datatable';
+// import {TableModule} from 'primeng/table';
+import {  DropdownModule } from 'primeng/primeng';
+import { VentasComponent } from './components/ingresos/ventas/ventas.component';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { ListSugerenciasComponent } from './components/list-sugerencias/list-sugerencias.component';
 @NgModule({
   declarations: [
     AppComponent,
     PrincipalComponent,
     LoginComponent,
+    DialogComponent,
     SidebarComponent,
     RegisterComponent,
     CategoriasComponent,
@@ -56,11 +66,15 @@ import {NgBusyModule} from 'ng-busy';
     CarritoComponent,
     ContactoComponent,
     ShowProductoComponent,
-    PagarTotalComponent
+    PagarTotalComponent,
+    SugerenciasComponent,
+    VentasComponent,
+    DialogComponent,
+    ListSugerenciasComponent
   ],
   imports: [
-     MaterialModule,
     FormsModule,
+     MaterialModule,DataTableModule,DropdownModule,
     HttpModule,
     BrowserAnimationsModule,
     // BrowserModule,
@@ -71,8 +85,11 @@ import {NgBusyModule} from 'ng-busy';
     NgBusyModule
     // ProveedorModule
   ],
+  entryComponents:[DialogComponent],
   providers: [appRoutingProviders,
-  MaestroServiceService],
+  MaestroService,
+  {provide: MAT_DATE_LOCALE, useValue: 'es-Pe'},
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

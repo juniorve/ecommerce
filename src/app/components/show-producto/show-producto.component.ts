@@ -2,7 +2,7 @@ import { ProductoService } from './../../services/producto.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import swal from 'sweetalert';
-import { MaestroServiceService } from '../../services/maestro-service.service';
+import { MaestroService } from '../../services/maestro-service.service';
 import { GLOBAL } from '../../services/global';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
@@ -26,7 +26,7 @@ export class ShowProductoComponent implements OnInit,OnDestroy {
     {ruta:"assets/images/productos/foto1.jpg",name:"Manuela Cervantes",email:"manuela@gmail.com",fecha:"27 febrero 2019",descripcion:"Compre el juego de cocina hace poco, pero la calidad es increible y ha sido la mejor elección."},
     {ruta:"assets/images/productos/foto2.jpg",name:"Andrea Sotomayo",email:"andrea@gmail.com",fecha:"12 mayo 2019",descripcion:"Decidi aprovechar la oferta y el hermoso diseño me enamoro, soy la envidia entre mis amigas."}
   ]
-  constructor(private router:Router,private route:ActivatedRoute, private fb:FormBuilder,public maestroService:MaestroServiceService,private productoService:ProductoService) { 
+  constructor(private router:Router,private route:ActivatedRoute, private fb:FormBuilder,public maestroService:MaestroService,private productoService:ProductoService) { 
    this.newForm();
    this.url = GLOBAL.url;
   }
@@ -68,7 +68,9 @@ export class ShowProductoComponent implements OnInit,OnDestroy {
   }
 
   payProducts(sumaTotal){
-    this.router.navigate(['/pagar-total/'+sumaTotal+10]);
+    console.log("suma"+parseFloat(sumaTotal));
+    let pagoTotal=sumaTotal+10;
+    this.router.navigate(['/pagar-total/'+pagoTotal]);
   }
   
   addProducto(producto: any) {
