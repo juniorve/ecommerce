@@ -4,6 +4,10 @@
 .contenedor{
   margin-top:110px;
 }
+.desc-pdf-cont{
+	margin-left: 6px;
+    height: 37px;
+}
 .guardar{
     margin-left: 5px;
     color: white;
@@ -614,7 +618,8 @@ Header and header elements
 .checkout-price strong span,
 .checkout-total strong span  {
 	font-size: 17px;
-}
+}´
+
 .goods-data h3,
 .checkout-page .checkout-description h3 {
 	font: 300 14px 'Open Sans', sans-serif;

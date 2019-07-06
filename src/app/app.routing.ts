@@ -1,3 +1,4 @@
+import { ListSugerenciasComponent } from './components/list-sugerencias/list-sugerencias.component';
 import { VentasComponent } from './components/ingresos/ventas/ventas.component';
 import { PagarTotalComponent } from './components/pagar-total/pagar-total.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
@@ -21,6 +22,7 @@ import { AdmProductoComponent } from './components/producto/adm-producto/adm-pro
 import { NewProductoComponent } from './components/producto/new-producto/new-producto.component';
 import { GanananciasComponent } from './components/ingresos/ganancias/ganancias.component';
 import { SugerenciasComponent } from './components/sugerencias/sugerencias.component';
+import { ComprasComponent } from './components/compras/compras.component';
 
 const appRoutes: Routes = [
     {
@@ -35,12 +37,13 @@ const appRoutes: Routes = [
       //resumen
       {path:'ganancias', component: GanananciasComponent},
       {path:'ventas', component: VentasComponent},
-      {path:'list-sugerencias', component: SugerenciasComponent},
+      {path:'list-sugerencias', component: ListSugerenciasComponent},
       //productos
       {path:'adm-producto', component: AdmProductoComponent},
       {path:'edit-producto/:id', component: EditProductoComponent},
       {path:'new-producto', component: NewProductoComponent},
-      {path:'list-producto', component: ListProductoComponent}
+      {path:'list-producto', component: ListProductoComponent},
+      { path: 'compras', component: ComprasComponent }
      ]
   },
   { path: 'categorias', component: CategoriasComponent },

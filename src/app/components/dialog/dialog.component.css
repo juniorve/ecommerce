@@ -326,7 +326,15 @@
   .content-fact{
     padding: 0 52px;
   }
-  
+  .desc-pdf-cont{
+    margin-left: 7px;
+    height: 37px;
+    background: #483D8B;
+  }
+  .content-btn{
+    margin-top: 15px;
+    text-align: center;
+  }
   /* .content-update button {
     height: 35px;
   } */

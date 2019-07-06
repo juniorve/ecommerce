@@ -41,6 +41,7 @@ import {  DropdownModule } from 'primeng/primeng';
 import { VentasComponent } from './components/ingresos/ventas/ventas.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { ListSugerenciasComponent } from './components/list-sugerencias/list-sugerencias.component';
+import { ComprasComponent } from './components/compras/compras.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +71,8 @@ import { ListSugerenciasComponent } from './components/list-sugerencias/list-sug
     SugerenciasComponent,
     VentasComponent,
     DialogComponent,
-    ListSugerenciasComponent
+    ListSugerenciasComponent,
+    ComprasComponent
   ],
   imports: [
     FormsModule,

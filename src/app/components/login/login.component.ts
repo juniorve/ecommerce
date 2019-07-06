@@ -78,6 +78,7 @@ export class LoginComponent implements OnInit{
                         // conseguir el token para enviarselo a cada peticion HTTP
                         this._userService.loginUser(this.user,'true').subscribe(
                           response=>{
+                            console.log(response);
                             let token =response.token;
                             this.token = token;
 
@@ -87,7 +88,14 @@ export class LoginComponent implements OnInit{
                             else{
                               // crear elemento en el localstorage para tener al token disponible
                               localStorage.setItem('token', token);
-                                  this.getProductos();
+                                  
+                              
+                              //=========== BAJO STOCK
+                              // this.getProductos();
+
+
+
+
                                       //  this._router.navigate(['/mant-proveedor']);
                                        this._router.navigate(['/']);
                                         this.user = new User(null,'','','','','','','','','');

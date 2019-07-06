@@ -139,7 +139,7 @@ public proveedores:Proveedor[]=[];
 
   editProducto() {
     console.log(this.producto);
-    this._productoService.updateProducto(this.token,this.productoId, this.producto).subscribe(
+    this._productoService.updateProducto(this.productoId, this.producto).subscribe(
       response => {
         if (!response.producto) {
           swal('Error', 'el producto no se modifico correctamente', 'warning');

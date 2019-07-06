@@ -60,12 +60,12 @@ export class ProductoService {
 
 
 
-  updateProducto(token, id: String, producto: Producto) {
-
+  updateProducto(id: String, producto: any) {
+    console.log(id,producto);
     let json = JSON.stringify(producto);
     let params = json;
 
-    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': token });
+    let headers = new Headers({ 'Content-Type': 'application/json' });
 
     return this._http.put(this.url + 'producto/' + id, params, { headers: headers })
       .map(res => res.json());

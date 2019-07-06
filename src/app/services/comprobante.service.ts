@@ -54,6 +54,15 @@ export class ComprobanteService {
             .map(res => res.json());
     }
 
+    getComprobantesxDNI(dni: any) {
+        console.log(dni);
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this._http.get(this.url + 'getcomprobantesDni/' + dni, options)
+            .map(res => res.json());
+    }
+
     getDetalleComprobante(idComprobante: any) {
         console.log(idComprobante);
         let headers = new Headers({ 'Content-Type': 'application/json' });

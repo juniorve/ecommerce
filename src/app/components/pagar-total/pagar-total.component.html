@@ -1,4 +1,4 @@
-<div [ngBusy]="{busy: maestroService.busy, message: 'Cargando producto...', backdrop: true}"></div>
+<div [ngBusy]="{busy: maestroService.busy, message: 'Cargando...', backdrop: true}"></div>
 <header class="header trans_300">
   <!-- Main Navigation -->
   <div class="main_nav_container">
@@ -160,12 +160,18 @@
           </div>
 
           <div class="boton col-sm-12">
-            <button class="btn volver btnsave" [routerLink]="['/carrito']" type="button">
+            <button class="btn volver btnsave" [routerLink]="['/carrito']" type="button" *ngIf="bandera==false">
               <i class="fa fa-arrow-left" aria-hidden="true"></i>
               Regresar</button>
-            <button class="btn guardar  btnsave" (click)="saveTotal()" type="submit">
+            <button class="btn guardar  btnsave" (click)="saveTotal()" type="submit" *ngIf="bandera==false">
               <i class="fa fa-floppy-o" aria-hidden="true"></i>
               Realizar pago</button>
+
+              <button class="btn volver btnsave" [routerLink]="['/principal']" type="button" *ngIf="bandera==true">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                Inicio</button>
+              <button mat-flat-button type="button" class="desc-pdf-cont" (click)="PDF()" *ngIf="bandera==true">
+              <i class="fa fa-download" aria-hidden="true"></i> COMPROBANTE</button>
           </div>
         </div>
       </div>
